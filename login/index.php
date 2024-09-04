@@ -80,7 +80,7 @@ include ('../app/config.php');
                 icon: "error",
                 title: "Las datos introducios son incorrectos. Vuelva a intentarlo",
                 showConfirmButton: false,
-                timer: 2000
+                timer: 3000
               });
 
 

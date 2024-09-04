@@ -1,20 +1,27 @@
 <?php
 //aca verificamos que si existe una sesion y verificamos el correo que se ingreo para ver si tiene acceso a el panel de admin
 session_start();
-if(isset($_SESSION['email recibido'])){
-    //echo "El usuario inicio sesion";
-    $email_sesion = $_SESSION['email recibido'];
-    //query que permite buscar el nombre del usuario activo en sesion
-    $query_sesion = $pdo->prepare("SELECT * FROM usuarios WHERE correo = '$email_sesion' and estado ='1';");
-    $query_sesion->execute();
+if (isset($_SESSION['email recibido'])) {
+  //echo "El usuario inicio sesion";
+  $email_sesion = $_SESSION['email recibido'];
 
-    $datos_usuario = $query_sesion->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($datos_usuario as $datos_usuario){
-       $nombre_usuario = $datos_usuario['nombres'];
-       $cargo_usuario = $datos_usuario['cargo'];
-    }
+  // Query que permite buscar el nombre del usuario activo en sesión y su rol
+  $query_sesion = $pdo->prepare("
+      SELECT u.nombres, r.nombre_rol
+      FROM usuarios u
+      JOIN roles r ON u.rol_id = r.id_rol
+      WHERE u.correo = :email_sesion AND u.estado = '1' AND r.estado = '1'
+  ");
+  $query_sesion->bindParam(':email_sesion', $email_sesion, PDO::PARAM_STR);
+  $query_sesion->execute();
 
-}else{
+  $datos_usuario = $query_sesion->fetchAll(PDO::FETCH_ASSOC);
+  foreach ($datos_usuario as $datos_usuario) {
+      $nombre_usuario = $datos_usuario['nombres'];
+      $nombre_rol = $datos_usuario['nombre_rol'];
+  }
+}
+else{
   echo "El usuario no inicio sesion";
   header('Location: ' . APP_URL . "/login");
 } 
@@ -45,7 +52,10 @@ if(isset($_SESSION['email recibido'])){
   <!-- Iconos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-
+  <!-- Datatables -->
+  <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -130,7 +140,7 @@ if(isset($_SESSION['email recibido'])){
         </div>
         <div class="info">
           <br>
-          <a href="#" class="d-block"><?=$cargo_usuario;?></a>
+          <a href="#" class="d-block"><?=$nombre_rol;?></a>
         </div>
       </div>
 
@@ -150,22 +160,39 @@ if(isset($_SESSION['email recibido'])){
               </p>
             </a>
             <ul class="nav nav-treeview">
+
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado roles -->
                 <a href="<?=APP_URL;?>/admin/roles" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-
-                  <p>Listado de Roles</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>P2</p>
+                  <p>Listado de roles</p>
                 </a>
               </li>
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-people"></i></i>
+              <p>
+                Usuarios
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/usuarios" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de usuarios</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
           <li class="nav-item">
            <!--  codigo para cerrar sesion -->
             <a href="<?=APP_URL;?>/login/logout.php" class="nav-link" style="background-color: #FA160A">
