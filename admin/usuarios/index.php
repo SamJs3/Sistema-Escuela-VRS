@@ -63,12 +63,12 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                     <div class="btn-group" role="group" aria-label="Basic example">
                     <a href="show.php?id=<?=$id_usuario;?>" type="button" class="btn btn-primary">Ver</a>
                     <a href="edit.php?id=<?=$id_usuario;?>" type="button" class="btn btn-success">Editar</a>
-                    <form action="<?=APP_URL;?>/app/controllers/roles/delete.php" onclick="preguntar(event)" method="post" id="miFormulario<?=$id_usuario;?>">
+                    <form action="<?=APP_URL;?>/app/controllers/usuarios/delete.php" onclick="preguntar<?=$id_usuario;?>(event)" method="post" id="miFormulario<?=$id_usuario;?>">
                         <input type="text" name="id_usuario" value="<?=$id_usuario;?>" hidden>
                         <button type="submit" class="btn btn-danger" style="border-radius: 0px 5px 5px 0px;">Eliminar</button>
                     </form>
                     <script>
-                        function preguntar(event){
+                        function preguntar<?=$id_usuario;?>(event){
                             event.preventDefault();
                             Swal.fire({
                               title: 'Eliminar registro',

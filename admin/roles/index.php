@@ -35,7 +35,7 @@ include ('../../app/controllers//roles/listado_de_roles.php');
             <thead class="thead-dark">
                 <tr>
                     <th><center>Nro</center></th>
-                    <th><center>Nombre del rol</center></th>
+                    <th><center>Rol</center></th>
                     <th><center>Acciones</center></th>
                 </tr>
             </thead>  
@@ -53,12 +53,12 @@ include ('../../app/controllers//roles/listado_de_roles.php');
                     <div class="btn-group" role="group" aria-label="Basic example">
                     <a href="show.php?id=<?=$id_rol;?>" type="button" class="btn btn-primary">Ver</a>
                     <a href="edit.php?id=<?=$id_rol;?>" type="button" class="btn btn-success">Editar</a>
-                    <form action="<?=APP_URL;?>/app/controllers/roles/delete.php" onclick="preguntar(event)" method="post" id="miFormulario<?=$id_rol;?>">
+                    <form action="<?=APP_URL;?>/app/controllers/roles/delete.php" onclick="preguntar<?=$id_rol;?>(event)" method="post" id="miFormulario<?=$id_rol;?>">
                         <input type="text" name="id_rol" value="<?=$id_rol;?>" hidden>
                         <button type="submit" class="btn btn-danger" style="border-radius: 0px 5px 5px 0px;">Eliminar</button>
                     </form>
                     <script>
-                        function preguntar(event){
+                        function preguntar<?=$id_rol;?>(event){
                             event.preventDefault();
                             Swal.fire({
                               title: 'Eliminar registro',

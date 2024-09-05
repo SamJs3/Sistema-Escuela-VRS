@@ -36,17 +36,12 @@ if($password == $password_confirmada){
                 $_SESSION['mensaje'] = "El usuario no ha sido registrado, por favor intenta de nuevo o comunicate con el administrador";
                 $_SESSION['icono'] = "error";
         }
-    
     }catch (Exception $exception){
         session_start();
         $_SESSION['mensaje'] = "El correo electronico ingresado ya esta en uso, por favor ingresa uno diferente";
         $_SESSION['icono'] = "warning";
         ?><script>window.history.back();</script><?php
-    }
-
-    
-    
-
+    }  
 }else{
     //echo"Las contraseñas no son iguales";
     session_start();

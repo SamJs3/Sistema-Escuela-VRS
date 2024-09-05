@@ -43,7 +43,14 @@ include('../../app/controllers/roles/datos_del_rol.php');
                         </div>
                         <div class="form-group">
                           <label for="">Estado</label>
-                          <p><?=$estado?></p>
+                            <p>
+                              <?php
+                                 if($estado == '1'){
+                                          echo "Activo";
+                                 }else{
+                                          echo "Inactivo";
+                              }?> 
+                            </p>
                       </div>
                     </div>
               </div>
