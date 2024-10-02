@@ -22,17 +22,35 @@ include ('../app/config.php');
   <!-- Aca se incluye la libreria que permite usar Sweetalert2, para estilizar alertas -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
+  <style>
+    /* Cambiar el color de fondo de la página de login */
+    body.login-page {
+      background: #f4f6f9; /* Un fondo claro que combine con AdminLTE */
+    }
+  </style>
+ 
 </head>
 <body class="hold-transition login-page">
+<!-- <div class="position-absolute top-0 end-0 p-2">
+  <img src="../Asset/Umg.png" class="img-fluid" style="max-width: 80px;" alt="Logo esquina">
+</div> -->
+
+
 <div class="login-box">
   <div class="login-logo">
-    <!-- /.imagen en pagina de login -->
-    <img src="../Asset/FachadaEscuela.jpg" width="300px" alt="LogoEscuela"> <br> <br>
-    
-    <!-- /.aca se muestra el nombre de la aplicacion en la pagina de login -->
-    <h3 href=""><b><?=APP_NAME;?></b></h3> 
+  <center>
+        <br>
+        <img src="../Asset/FachadaEscuela.jpg"
+             width="225px" alt=""><br><br>
+    </center>
+
+  <div class="login-logo">
+        <h3 href=""><b>Escuela</b></h3>
+        <h3 href=""><b>Vicente R. Sanchez</b></h3>
+    </div>
+
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -78,15 +96,12 @@ include ('../app/config.php');
               Swal.fire({
                 position: "top-middle",
                 icon: "error",
-                title: "Las datos introducios son incorrectos. Vuelva a intentarlo",
+                title: "Las datos introducidos son incorrectos. Vuelva a intentarlo",
                 showConfirmButton: false,
                 timer: 3000
               });
-
-
-
           </script>
-      <!-- session destroy nos permite eliminar la sesion que se abre para que la alerta solo se  muestre una vez -->
+      <!-- session destroy nos permite eliminar la sesion que se abre para que la alerta solo se muestre una vez -->
        <?php
        session_destroy();
       }

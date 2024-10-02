@@ -85,7 +85,7 @@ include ('../../app/controllers/usuarios/datos_usuario.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <!-- Botones del formulario -->
-                                            
+                                            <button onclick="window.print();" class="btn btn-primary">Imprimir</button>
                                             <a href="<?=APP_URL;?>/admin/usuarios" class="btn btn-secondary">Volver</a>
                                         </div>
                                     </div>

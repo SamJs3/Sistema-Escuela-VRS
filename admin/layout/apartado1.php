@@ -7,17 +7,16 @@ if (isset($_SESSION['email recibido'])) {
 
   // Query que permite buscar el nombre del usuario activo en sesión y su rol
   $query_sesion = $pdo->prepare("
-      SELECT u.nombres, r.nombre_rol
+      SELECT u.correo, r.nombre_rol
       FROM usuarios u
       JOIN roles r ON u.rol_id = r.id_rol
-      WHERE u.correo = :email_sesion AND u.estado = '1' AND r.estado = '1'
-  ");
+      WHERE u.correo = :email_sesion AND u.estado = '1' AND r.estado = '1' ");
   $query_sesion->bindParam(':email_sesion', $email_sesion, PDO::PARAM_STR);
   $query_sesion->execute();
 
   $datos_usuario = $query_sesion->fetchAll(PDO::FETCH_ASSOC);
   foreach ($datos_usuario as $datos_usuario) {
-      $nombre_usuario = $datos_usuario['nombres'];
+      $nombre_usuario = $datos_usuario['correo'];
       $nombre_rol = $datos_usuario['nombre_rol'];
   }
 }
@@ -37,6 +36,8 @@ else{
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?=APP_NAME;?> | Starter</title>
+
+  
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -123,9 +124,10 @@ else{
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?=APP_URL;?>/admin" class="brand-link">
-      <img src="https://cdn-icons-png.flaticon.com/128/5766/5766151.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Menú Principal</span>
+    <a href="<?=APP_URL;?>/admin" class="brand-link" >
+    <img src="https://cdn-icons-png.flaticon.com/128/15016/15016157.png" alt="Icono de Escuela" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">Menú de inicio</span>
+
     </a>
 
     <!-- Sidebar -->
@@ -192,15 +194,106 @@ else{
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-bar-chart-steps"></i></i>
+              <p>
+                Niveles
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/niveles" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de niveles</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-list-ol"></i></i>
+              <p>
+                Grados
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/grados" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de grados</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-journals"></i></i>
+              <p>
+                Cursos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/cursos" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de cursos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-gear-fill"></i></i>
+              <p>
+                Configuraciones
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/configuraciones" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Varios</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+
+          
+    
+
 
           <li class="nav-item">
            <!--  codigo para cerrar sesion -->
-            <a href="<?=APP_URL;?>/login/logout.php" class="nav-link" style="background-color: #FA160A">
+            <a href="<?=APP_URL;?>/login/logout.php" class="nav-link" style="background-color: #ffc107; color: #000;">
               <i class="nav-icon fas"><i class="bi bi-door-open"></i></i>
-              <p>
-                Cerrar Sesión
-          
-              </p>
+              <p>Cerrar Sesión</p>
+            </a>
+
             </a>
           </li>
         </ul>

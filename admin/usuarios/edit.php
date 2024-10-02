@@ -33,7 +33,7 @@ include ('../../app/controllers/roles/listado_de_roles.php');
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nombre del rol</label>
+                                            <label for="">Rol del usuario</label>
                                             <input type="text" name="id_usuario" value="<?=$id_usuario;?>" hidden>
                                             <!-- Lista desplegable para seleccionar el rol -->
                                             <div class="form-inline">

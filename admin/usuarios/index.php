@@ -58,7 +58,18 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                   <td style="text-align: center"><?=$usuario['nombre_rol'];?></td>
                   <td style="text-align: center"><?=$usuario['correo'];?></td>
                   <td style="text-align: center"><?=$usuario['fyh_creacion'];?></td>
-                  <td style="text-align: center"><?=$usuario['estado'];?></td>
+                  <td style="text-align: center">
+                      <p>
+                          <?php
+                          if ($usuario['estado'] == "1") {
+                              echo "Activo";
+                          } else {
+                              echo "Inactivo";
+                          }
+                          ?>
+                      </p>
+                  </td>
+                  
                   <td style="text-align: center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                     <a href="show.php?id=<?=$id_usuario;?>" type="button" class="btn btn-primary">Ver</a>

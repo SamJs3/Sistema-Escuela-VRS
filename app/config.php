@@ -4,7 +4,7 @@ define('USUARIO','root');
 define('PASSWORD','');
 define('BD','sistemagestionescolar');
 
-define('APP_NAME','SISTEMA DE GESTIÓN ESCOLAR');//Nombre de la aplicacion
+define('APP_NAME','ESCUELA VICENTE R. SANCHEZ');//Nombre de la aplicacion
 define('APP_URL','http://localhost/sistemanotas'); 
 define('KEY_API_MAPS',''); //Api para google maps 
 

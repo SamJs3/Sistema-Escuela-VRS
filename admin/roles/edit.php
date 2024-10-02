@@ -16,7 +16,7 @@ include('../../app/controllers/roles/datos_del_rol.php');
     <div class="container">
       <div class="row">
 
-        <h1>EDITAR ROL: <?=$nombre_rol;?></h1>
+        <h1>Editar rol: <?=$nombre_rol;?></h1>
 
         <!-- empieza la configuracion de la tabla de roles -->
       </div>
@@ -38,10 +38,12 @@ include('../../app/controllers/roles/datos_del_rol.php');
                                 <input type="text" name="id_rol" value="<?=$id_rol;?>" hidden>
                                 <input type="text" class="form-control" name="nombre_rol" value="<?=$nombre_rol?>">
                               </div>
-                              <div class="form-group">
+                              
+                              <!-- <div class="form-group">
                                 <label for="">Fecha y hora de creación</label>
                                 <p><?=$fyh_creacion?></p>
-                              </div>
+                              </div> -->
+
                               <div class="form-group">
                                 <label for="">Estado</label>
                                 <input type="text" class="form-control" name="estado" value="<?=$estado?>">
@@ -65,6 +67,8 @@ include('../../app/controllers/roles/datos_del_rol.php');
     </div>
     <!-- /.content -->
   </div>
+  </div>
+
   <!-- /.content-wrapper -->
 
 <?php 

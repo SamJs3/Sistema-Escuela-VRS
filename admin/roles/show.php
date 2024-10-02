@@ -58,6 +58,7 @@ include('../../app/controllers/roles/datos_del_rol.php');
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
+                    <button onclick="window.print();" class="btn btn-primary">Imprimir</button>
                     <a href="<?=APP_URL;?>/admin/roles" class="btn btn-secondary">Volver</a>
                   </div>
                 </div>
