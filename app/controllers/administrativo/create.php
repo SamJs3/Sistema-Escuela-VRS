@@ -49,7 +49,7 @@ $sentencia->execute();
 
 $id_persona = $pdo->lastInsertId();
 
-/* INSERT TABLA ADMINISTRATIVOS */
+/* INSERT TABLA DOCENTES */
 $sentencia = $pdo->prepare('INSERT INTO administrativos
 (persona_id,fyh_creacion, estado)
 VALUES ( :persona_id,:fyh_creacion,:estado)');
