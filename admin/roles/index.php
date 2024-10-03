@@ -73,7 +73,6 @@ include ('../../app/controllers//roles/listado_de_roles.php');
                                   if (result.isConfirmed){
                                     var form = $('#miFormulario<?=$id_rol;?>');
                                     form.submit();
-                                    //Swal.fire('Eliminado', 'Se elimino el registro', 'success');
                                   }
                             });
                         }
@@ -89,12 +88,24 @@ include ('../../app/controllers//roles/listado_de_roles.php');
           </tbody>
           </table> 
           </div>
-
+          
+          <!-- Boton Volver -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <a href="<?=APP_URL;?>/admin" class="btn btn-secondary ml-3">Volver</a>
+              </div>
+            </div>
           </div>
 
+          </div>
           </div>  
-         
+          
         </div>
+
+        </div>
+
+        
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -105,9 +116,6 @@ include ('../../app/controllers//roles/listado_de_roles.php');
 include ('../../admin/layout/apartado2.php'); //se llama la separacion de apartado 2
 include ('../../layout/mensajes.php');
 ?>
-
-
-
 
 <!-- Configuracion de opciones de la tabla de listado de roles -->
 <script>

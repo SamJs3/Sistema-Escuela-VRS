@@ -13,12 +13,12 @@ include ('../../app/controllers/usuarios/datos_usuario.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Detalle usuario: <?=$nombres;?> <?=$apellidos;?> </h1> 
+                <h1>Detalle usuario: <?=$correo;?> </h1> 
             </div>
             <br>
             <div class="row">
                 <!-- Tamaño del formulario -->
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Datos registrados</h3>
@@ -37,27 +37,15 @@ include ('../../app/controllers/usuarios/datos_usuario.php');
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nombre del usuario</label>
-                                            <p><?=$nombres;?> </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="">Apellidos</label>
-                                            <p><?=$apellidos;?> </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
                                             <label for="">Correo electrónico</label>
                                             <p><?=$correo;?> </p>
                                         </div>
                                     </div>                        
 
+
+                                </div>
+
+                                <div class="row">
 
                                     <div class="col-md-4">
                                         <div class="form-group">

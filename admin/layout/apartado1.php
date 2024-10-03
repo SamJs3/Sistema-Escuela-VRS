@@ -28,9 +28,6 @@ else{
 
 <!DOCTYPE html>
 
-
-
-
 <html lang="es">
 <head>
   <meta charset="utf-8">
@@ -138,61 +135,16 @@ else{
           <img src="https://cdn-icons-png.flaticon.com/128/1896/1896561.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?=$nombre_usuario;?></a>
-        </div>
-        <div class="info">
-          <br>
           <a href="#" class="d-block"><?=$nombre_rol;?></a>
-        </div>
+        </div>     
       </div>
 
 
-      <!-- Sidebar Menu -->
+
+      
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <!-- nombre primer opcion de barra izquierda -->
-              <i class="nav-icon fas"><i class="bi bi-tags"></i></i>
-              <p>
-                Roles
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-                <!-- configuracion y llamado a opcion de listado roles -->
-                <a href="<?=APP_URL;?>/admin/roles" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listado de roles</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <!-- nombre segunda opcion de barra izquierda -->
-              <i class="nav-icon fas"><i class="bi bi-people"></i></i>
-              <p>
-                Usuarios
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-                <!-- configuracion y llamado a opcion de listado de -->
-                <a href="<?=APP_URL;?>/admin/usuarios" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listado de usuarios</p>
-                </a>
-              </li>
-            </ul>
-          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link active">
@@ -260,10 +212,98 @@ else{
           </li>
 
 
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-person-vcard"></i></i>
+              <p>
+                Docentes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/docentes" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de docentes</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre primer opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-tags"></i></i>
+              <p>
+                Roles
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado roles -->
+                <a href="<?=APP_URL;?>/admin/roles" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de roles</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link active">
               <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-people"></i></i>
+              <p>
+                Usuarios
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/usuarios" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de usuarios</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-person-fill-check"></i></i>
+              <p>
+                Personal Administrativo
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/administrativo" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de personal</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          
+          
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas"><i class="bi bi-gear-fill"></i></i>
               <p>
                 Configuraciones

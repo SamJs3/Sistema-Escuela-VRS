@@ -6,6 +6,7 @@ include ('../app/controllers/usuarios/listado_de_usuarios.php');
 include ('../app/controllers/niveles/listado_de_niveles.php');
 include ('../app/controllers/grados/listado_grados.php');
 include ('../app/controllers/cursos/listado_de_cursos.php');
+include ('../app/controllers/administrativo/listado_de_administrativos.php');
 ?>
 
 
@@ -141,6 +142,27 @@ include ('../app/controllers/cursos/listado_de_cursos.php');
                   </div>
                   <a href="<?=APP_URL?>/admin/cursos" class="small-box-footer text-white">
                     Ir al modulo Cursos <i class="fas fa-arrow-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-6">
+                <div class="small-box" style="background: linear-gradient(to right, #ff8008, #ffc837, #a65432);">
+                  <div class="inner text-white">
+                    <?php
+                    $contador_administrativo = 0;
+                    foreach($administrativos as $administrativo){
+                        $contador_administrativo++;
+                    }
+                    ?>
+                    <h3><?=$contador_administrativo?></h3>
+                    <p> Usuarios registrados</p>
+                  </div>
+                  <div class="icon">
+                  <i class="bi bi-person-fill-check"></i>
+                  </div>
+                  <a href="<?=APP_URL?>/admin/administrativo" class="small-box-footer text-white">
+                    Modulo Administrativo <i class="fas fa-arrow-circle-right"></i>
                   </a>
                 </div>
               </div>

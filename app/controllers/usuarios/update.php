@@ -2,8 +2,6 @@
 
 include('../../../app/config.php');
 $id_usuario = $_POST['id_usuario'];
-$nombres = $_POST['nombres'];
-$apellidos = $_POST['apellidos'];
 $rol_id = $_POST['rol_id'];
 $correo = $_POST['correo'];
 $password = $_POST['password'];
@@ -13,17 +11,13 @@ $password_confirmada = $_POST['password_confirmada'];
 
 if ($password == ""){ 
         $sentencia = $pdo->prepare('UPDATE usuarios
-        SET nombres=:nombres,
-            apellidos=:apellidos,
+        SET 
             rol_id=:rol_id,
             correo=:correo,
             fyh_actualizacion=:fyh_actualizacion,
             estado=:estado
         WHERE id_usuario=:id_usuario');
         
-    
-        $sentencia->bindParam(':nombres',$nombres);
-        $sentencia->bindParam(':apellidos',$apellidos);
         $sentencia->bindParam(':rol_id',$rol_id);
         $sentencia->bindParam(':correo',$correo);
         $sentencia->bindParam(':fyh_actualizacion',$fechaAHora);
@@ -56,8 +50,7 @@ if ($password == ""){
         $password = password_hash($password, PASSWORD_DEFAULT);
     
         $sentencia = $pdo->prepare('UPDATE usuarios
-        SET nombres=:nombres,
-            apellidos=:apellidos,
+        SET 
             rol_id=:rol_id,
             correo=:correo,
             password=:password,
@@ -65,9 +58,7 @@ if ($password == ""){
             estado=:estado
         WHERE id_usuario=:id_usuario');
         
-    
-        $sentencia->bindParam(':nombres',$nombres);
-        $sentencia->bindParam(':apellidos',$apellidos);
+
         $sentencia->bindParam(':rol_id',$rol_id);
         $sentencia->bindParam(':correo',$correo);
         $sentencia->bindParam(':password',$password);
