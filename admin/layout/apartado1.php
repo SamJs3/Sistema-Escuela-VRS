@@ -146,12 +146,14 @@ else{
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+
+
           <li class="nav-item">
             <a href="#" class="nav-link active">
               <!-- nombre segunda opcion de barra izquierda -->
-              <i class="nav-icon fas"><i class="bi bi-bar-chart-steps"></i></i>
+              <i class="nav-icon fas"><i class="bi bi-person-badge"></i></i>
               <p>
-                Niveles
+                Estudiantes
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -159,21 +161,22 @@ else{
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
-                <a href="<?=APP_URL;?>/admin/niveles" class="nav-link active">
+                <a href="<?=APP_URL;?>/admin/estudiantes" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Listado de niveles</p>
+                  <p>Listado de estudiantes</p>
                 </a>
               </li>
             </ul>
           </li>
 
 
+
           <li class="nav-item">
             <a href="#" class="nav-link active">
               <!-- nombre segunda opcion de barra izquierda -->
-              <i class="nav-icon fas"><i class="bi bi-list-ol"></i></i>
+              <i class="nav-icon fas"><i class="bi bi-person-vcard"></i></i>
               <p>
-                Grados
+                Docentes
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -181,9 +184,9 @@ else{
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
-                <a href="<?=APP_URL;?>/admin/grados" class="nav-link active">
+                <a href="<?=APP_URL;?>/admin/docentes" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Listado de grados</p>
+                  <p>Listado de docentes</p>
                 </a>
               </li>
             </ul>
@@ -215,9 +218,9 @@ else{
           <li class="nav-item">
             <a href="#" class="nav-link active">
               <!-- nombre segunda opcion de barra izquierda -->
-              <i class="nav-icon fas"><i class="bi bi-person-vcard"></i></i>
+              <i class="nav-icon fas"><i class="bi bi-list-ol"></i></i>
               <p>
-                Docentes
+                Grados
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -225,13 +228,36 @@ else{
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
-                <a href="<?=APP_URL;?>/admin/docentes" class="nav-link active">
+                <a href="<?=APP_URL;?>/admin/grados" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Listado de docentes</p>
+                  <p>Listado de grados</p>
                 </a>
               </li>
             </ul>
           </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-bar-chart-steps"></i></i>
+              <p>
+                Niveles
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/niveles" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de niveles</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
 
           <li class="nav-item">
             <a href="#" class="nav-link active">
@@ -254,6 +280,7 @@ else{
             </ul>
           </li>
 
+
           <li class="nav-item">
             <a href="#" class="nav-link active">
               <!-- nombre segunda opcion de barra izquierda -->
@@ -270,6 +297,27 @@ else{
                 <a href="<?=APP_URL;?>/admin/usuarios" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listado de usuarios</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas"><i class="bi bi-person-plus"></i></i>
+              <p>
+                Inscripciones
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/inscripciones" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Formulario de inscripción</p>
                 </a>
               </li>
             </ul>
@@ -296,10 +344,6 @@ else{
               </li>
             </ul>
           </li>
-
-
-          
-          
 
 
           <li class="nav-item">

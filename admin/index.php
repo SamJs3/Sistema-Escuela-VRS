@@ -7,6 +7,7 @@ include ('../app/controllers/niveles/listado_de_niveles.php');
 include ('../app/controllers/grados/listado_grados.php');
 include ('../app/controllers/cursos/listado_de_cursos.php');
 include ('../app/controllers/administrativo/listado_de_administrativos.php');
+include ('../app/controllers/docentes/listado_docentes.php');
 ?>
 
 
@@ -74,6 +75,29 @@ include ('../app/controllers/administrativo/listado_de_administrativos.php');
              </div>
               <a href="<?=APP_URL?>/admin/usuarios" class="small-box-footer">
               Ir al modulo Usuarios <i class="fas fa-arrow-circle-right"></i>
+             </a>
+                </div>
+            </div>
+
+
+            <!-- configuracion del widget de usuarios -->
+            <div class="col-lg-4 col-6">
+              <div class="small-box bg-primary">
+                <div class="inner">
+                  <?php
+                  $contador_docentes = 0;
+                  foreach($docentes as $docente){
+                      $contador_docentes= $contador_docentes+1;
+                  }
+                  ?>
+              <h3><?=$contador_docentes?></h3>
+              <p>Docentes registrados</p>
+              </div>
+             <div class="icon">
+             <i class="bi bi-person-vcard"></i>
+             </div>
+              <a href="<?=APP_URL?>/admin/docentes" class="small-box-footer">
+              Ir al modulo Docentes <i class="fas fa-arrow-circle-right"></i>
              </a>
                 </div>
             </div>

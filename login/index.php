@@ -42,7 +42,7 @@ include ('../app/config.php');
   <div class="login-logo">
   <center>
         <br>
-        <img src="../Asset/FachadaEscuela.jpg"
+        <img src="../Asset/logo.jpg"
              width="225px" alt=""><br><br>
     </center>
 
