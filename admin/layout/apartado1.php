@@ -189,6 +189,13 @@ else{
                   <p>Listado de docentes</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/asignaciones" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Asignar cursos</p>
+                </a>
+              </li>
             </ul>
           </li>
 
