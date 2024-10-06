@@ -64,16 +64,14 @@ include ('../../app/controllers/estudiantes/listado_estudiantes.php');
                   <td style="text-align: center"><?=$estudiante['nivel'];?></td>
                   
                   <td style="text-align: center">
-                      <p>
                           <?php
-                          if ($estudiante['estado'] == "1") {
-                              echo "Activo";
-                          } else {
-                              echo "Inactivo";
+                          if ($estudiante['estado'] == "1") { echo "Activo";
+                          } else { echo "Inactivo";
                           }
                           ?>
-                      </p>
                   </td>
+
+                  
                   
                   <td style="text-align: center">
                     <div class="btn-group" role="group" aria-label="Basic example">

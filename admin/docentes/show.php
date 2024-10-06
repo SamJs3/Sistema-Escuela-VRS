@@ -13,7 +13,7 @@ include ('../../app/controllers/docentes/datos_docente.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Usuario Docente: <?=$nombres ?> <?=$apellidos ?> </h1> 
+                <h1>Docente: <?=$nombres ?> <?=$apellidos ?> </h1> 
             </div>
             <br>
             <div class="row">

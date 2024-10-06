@@ -62,7 +62,6 @@ include ('../../app/controllers/docentes/listado_docentes.php');
                   <td style="text-align: center"><?=$docente['celular'];?></td>
                   
                   <td style="text-align: center">
-                      <p>
                           <?php
                           if ($docente['estado'] == "1") {
                               echo "Activo";
@@ -70,7 +69,6 @@ include ('../../app/controllers/docentes/listado_docentes.php');
                               echo "Inactivo";
                           }
                           ?>
-                      </p>
                   </td>
                   
                   <td style="text-align: center">

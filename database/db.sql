@@ -215,14 +215,16 @@ CREATE TABLE asignaciones (
   id_asignacion      INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   docente_id         INT (11) NOT NULL,
   nivel_id           INT (11) NOT NULL,
-  grado_id           INT (11) NOT NULL
+  curso_id           INT (11) NOT NULL,
+  grado_id           INT (11) NOT NULL,
 
   fyh_creacion   DATETIME NULL,
   fyh_actualizacion DATETIME NULL,
-  estado        VARCHAR (11)
+  estado        VARCHAR (11),
 
-  FOREIGN KEY (docente_id) REFERENCES docentes (id_docente) ON DELETE NO ACTION ON UPDATE CASCADE
-  FOREIGN KEY (nivel_id) REFERENCES niveles (id_nivel) ON DELETE NO ACTION ON UPDATE CASCADE
+  FOREIGN KEY (docente_id) REFERENCES docentes (id_docente) ON DELETE NO ACTION ON UPDATE CASCADE,
+  FOREIGN KEY (nivel_id) REFERENCES niveles (id_nivel) ON DELETE NO ACTION ON UPDATE CASCADE,
+  FOREIGN KEY (curso_id) REFERENCES cursos (id_curso) ON DELETE NO ACTION ON UPDATE CASCADE,
   FOREIGN KEY (grado_id) REFERENCES grados (id_grado) ON DELETE NO ACTION ON UPDATE CASCADE
 
 )ENGINE=InnoDB;

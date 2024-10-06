@@ -62,7 +62,7 @@ include ('../../app/controllers/administrativo/listado_de_administrativos.php');
                   <td style="text-align: center"><?=$administrativo['celular'];?></td>
                   
                   <td style="text-align: center">
-                      <p>
+                
                           <?php
                           if ($administrativo['estado'] == "1") {
                               echo "Activo";
@@ -70,7 +70,7 @@ include ('../../app/controllers/administrativo/listado_de_administrativos.php');
                               echo "Inactivo";
                           }
                           ?>
-                      </p>
+               
                   </td>
                   
                   <td style="text-align: center">

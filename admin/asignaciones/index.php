@@ -5,6 +5,7 @@ include ('../../admin/layout/apartado1.php');
 include ('../../app/controllers/docentes/listado_docentes.php');
 include ('../../app/controllers/niveles/listado_de_niveles.php');
 include ('../../app/controllers/grados/listado_grados.php');
+include ('../../app/controllers/cursos/listado_de_cursos.php');
 ?>
 
 
@@ -28,7 +29,7 @@ include ('../../app/controllers/grados/listado_grados.php');
           <h3 class="card-title">Cursos asignados</h3>
           <div class="card-tools">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_asignacion">
-                  <i class="bi bi-plus-square"></i> Asignar nueva materia
+                  <i class="bi bi-plus-square"></i> Asignar nuevo curso
             </button>
           </div>
 
@@ -41,11 +42,9 @@ include ('../../app/controllers/grados/listado_grados.php');
                     <th><center>Nro</center></th>
                     <th><center>Nombres</center></th>
                     <th><center>Apellidos</center></th>
-                    <th><center>CUI</center></th>
-                    <th><center>Fecha de nacimiento</center></th>
                     <th><center>Rol</center></th>
-                    <th><center>Número de teléfono</center></th>
                     <th><center>Estado</center></th>
+                    <th><center>Cursos Asignados</center></th>
                     <th><center>Acciones</center></th>
                 </tr>
             </thead>  
@@ -60,13 +59,11 @@ include ('../../app/controllers/grados/listado_grados.php');
                   <td style="text-align: center"><?=$contador_docentes;?></td>
                   <td style="text-align: center"><?=$docente['nombres'];?></td>
                   <td style="text-align: center"><?=$docente['apellidos'];?></td>
-                  <td style="text-align: center"><?=$docente['cui'];?></td>
-                  <td style="text-align: center"><?=$docente['fecha_nacimiento'];?></td>
+                  
                   <td style="text-align: center"><?=$docente['nombre_rol'];?></td>
-                  <td style="text-align: center"><?=$docente['celular'];?></td>
+                  
                   
                   <td style="text-align: center">
-                      <p>
                           <?php
                           if ($docente['estado'] == "1") {
                               echo "Activo";
@@ -74,10 +71,22 @@ include ('../../app/controllers/grados/listado_grados.php');
                               echo "Inactivo";
                           }
                           ?>
-                      </p>
+                  </td>
+                  <td>
+                  <center>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="../asignaciones/show.php?id=<?=$id_docente;?>" type="button" class="btn btn-primary">Cursos Asignados</a>
+                    
+
+                    </div>
+
+                    </center>
+                     
+
                   </td>
                   
-                  <td style="text-align: center">
+                  <td >
+                    <center>
                     <div class="btn-group" role="group" aria-label="Basic example">
                     <a href="show.php?id=<?=$id_docente;?>" type="button" class="btn btn-primary">Ver</a>
                     <a href="edit.php?id=<?=$id_docente;?>" type="button" class="btn btn-success">Editar</a>
@@ -108,6 +117,9 @@ include ('../../app/controllers/grados/listado_grados.php');
                     </script>
 
                     </div>
+
+                    </center>
+                    
                   </td>
               </tr>
             
@@ -231,20 +243,21 @@ include ('../../layout/mensajes.php');
 <div class="modal fade" id="modal_asignacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Asignacion de materia</h5>
+      <div class="modal-header" style="background-color: #137BFA">
+        <h5 class="modal-title" id="exampleModalLabel"><b>Asignacion de curso</b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+        <form action="<?=APP_URL;?>/app/controllers/asignaciones/create.php" method="post">
         <div class="row">
 
 
           <div class="col-md-12">
             <div class="form-group">
               <label for="">Docentes</label>
-              <select name="" id="" class="form-control">
+              <select name="id_docente" id="" class="form-control">
                   <?php
                   foreach ($docentes as $docente){
                     $id_docente = $docente['id_docente'];?>
@@ -260,8 +273,8 @@ include ('../../layout/mensajes.php');
 
           <div class="col-md-12">
               <div class="form-group">
-                <label for="">Nivel</label>
-                <select name="" id="" class="form-control">
+                <label for="">Niveles</label>
+                <select name="id_nivel" id="" class="form-control">
                     <?php
                     foreach ($niveles as $nivele){
                       $id_nivel = $nivele['id_nivel'];?>
@@ -278,12 +291,29 @@ include ('../../layout/mensajes.php');
 
           <div class="col-md-12">
               <div class="form-group">
-                <label for="">Grado</label>
-                <select name="" id="" class="form-control">
+                <label for="">Grados</label>
+                <select name="id_grado" id="" class="form-control">
                     <?php
                     foreach ($grados as $grado){
                       $id_grado = $grado['id_grado'];?>
                       <option value="<?=$id_grado;?>"><?=$grado['grado']." - ".$grado['seccion']?></option>
+
+                    <?php    
+                    }
+                    ?>
+                </select>
+              </div>
+          </div>
+
+
+          <div class="col-md-12">
+              <div class="form-group">
+                <label for="">Cursos</label>
+                <select name="id_curso" id="" class="form-control">
+                    <?php
+                    foreach ($cursos as $curso){
+                      $id_curso = $curso['id_curso'];?>
+                      <option value="<?=$id_curso;?>"><?=$curso['nombre_curso']?></option>
 
                     <?php    
                     }
@@ -297,9 +327,10 @@ include ('../../layout/mensajes.php');
       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
       </div>
+     </form>
     </div>
   </div>
 </div>

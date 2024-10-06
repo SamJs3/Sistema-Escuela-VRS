@@ -218,26 +218,7 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                 </div>
               </div>
 
-              <div class="col-lg-4 col-6">
-              <div class="small-box" style="background: linear-gradient(to right, #ff9966, #ff5e62);">
-                  <div class="inner text-white">
-                    <?php
-                    $contador_administrativo = 0;
-                    foreach($administrativos as $administrativo){
-                        $contador_administrativo++;
-                    }
-                    ?>
-                    <h3><?=$contador_administrativo?></h3>
-                    <p>Usuarios Administrativos</p>
-                  </div>
-                  <div class="icon">
-                  <i class="bi bi-person-fill-check"></i>
-                  </div>
-                  <a href="<?=APP_URL?>/admin/administrativo" class="small-box-footer text-white">
-                    Modulo Administrativo <i class="fas fa-arrow-circle-right"></i>
-                  </a>
-                </div>
-              </div>
+           
 
 
               <div class="col-lg-4 col-6">

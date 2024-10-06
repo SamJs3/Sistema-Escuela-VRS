@@ -55,7 +55,6 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                   <td style="text-align: center"><?=$usuario['correo'];?></td>
                   <td style="text-align: center"><?=$usuario['fyh_creacion'];?></td>
                   <td style="text-align: center">
-                      <p>
                           <?php
                           if ($usuario['estado'] == "1") {
                               echo "Activo";
@@ -63,7 +62,6 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                               echo "Inactivo";
                           }
                           ?>
-                      </p>
                   </td>
                   
                   <td style="text-align: center">
