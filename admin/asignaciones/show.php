@@ -36,6 +36,7 @@ include ('../../app/controllers/asignaciones/listado_asignaciones.php');
                                     <th><center>Grado</center></th>
                                     <th><center>Seccion</center></th>
                                     <th><center>Curso</center></th>
+                                    <th><center>Acciones</center></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -50,6 +51,43 @@ include ('../../app/controllers/asignaciones/listado_asignaciones.php');
                                         <td style="text-align: center"><?=$asignacione['grado'];?></td>
                                         <td style="text-align: center"><?=$asignacione['seccion'];?></td>
                                         <td style="text-align: center"><?=$asignacione['nombre_curso'];?></td>
+                                        <td >
+                                            <center>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                            
+                                            <a href="edit.php?id=<?=$id_docente;?>" type="button" class="btn btn-success">Editar</a>
+                                            <form action="<?=APP_URL;?>/app/controllers/docentes/delete.php" onclick="preguntar<?=$id_docente;?>(event)" method="post" id="miFormulario<?=$id_docente;?>">
+                                                <input type="text" name="id_docente" value="<?=$id_docente;?>" hidden>
+                                                <button type="submit" class="btn btn-danger" style="border-radius: 0px 5px 5px 0px;">Eliminar</button>
+                                            </form>
+                                            <script>
+                                                function preguntar<?=$id_docente;?>(event){
+                                                    event.preventDefault();
+                                                    Swal.fire({
+                                                      title: 'Eliminar registro',
+                                                      text: '¿Deseas eliminar este registro?',
+                                                      icon: 'question',
+                                                      showDenyButton: 'true',
+                                                      confirmButtonText: 'Eliminar',
+                                                      confirmButtonColor: '#a5161d',
+                                                      denyButtonColor: '#270a0a',
+                                                      denyButtonText: 'Cancelar'
+                                                    }).then((result)=>{
+                                                          if (result.isConfirmed){
+                                                            var form = $('#miFormulario<?=$id_docente;?>');
+                                                            form.submit();
+                                                            //Swal.fire('Eliminado', 'Se elimino el registro', 'success');
+                                                          }
+                                                    });
+                                                }
+                                            </script>
+
+                                            </div>
+
+                                            </center>
+                                            
+                                          </td>
+                                        
                                         
                                     </tr>
                                     <?php

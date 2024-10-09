@@ -1,10 +1,14 @@
 <!-- Configuración del formulario para crear un nuevo rol -->
+
 <?php 
+$id_docente = $_GET['id'];
 include ('../../app/config.php');
 include ('../../admin/layout/apartado1.php');
 include ('../../app/controllers/roles/listado_de_roles.php');
 include ('../../app/controllers/niveles/listado_de_niveles.php');
 include ('../../app/controllers/grados/listado_grados.php');
+include ('../../app/controllers/estudiantes/datos_estudiante.php');
+
 ?>
 
 <!-- Content Wrapper. Contiene el contenido de la página -->
@@ -14,15 +18,16 @@ include ('../../app/controllers/grados/listado_grados.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Crear nuevo Estudiante</h1> 
+                <h1>Editar estudiante: <?=$nombres." ".$apellidos?></h1> 
             </div>
             <br>
 
-        <form action="<?=APP_URL;?>/app/controllers/inscripciones/create.php" method="post">
+        <form action="<?=APP_URL;?>/app/controllers/estudiantes/update.php" method="post">
+
             <div class="row">
                 <!-- Tamaño del formulario -->
                 <div class="col-md-12">
-                    <div class="card card-outline card-primary">
+                    <div class="card card-outline card-success">
                         <div class="card-header">
                             <h3 class="card-title">Ingrese los datos personales del Estudiante</h3>
                         </div>
@@ -31,6 +36,10 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <!-- Selección del rol -->
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <input type="text" value="<?=$id_usuario?>" name="id_usuario" hidden>
+                                        <input type="text" value="<?=$id_persona?>" name="id_persona" hidden>
+                                        <input type="text" value="<?=$id_estudiante?>" name="id_estudiante" hidden>
+                                        <input type="text" value="<?=$id_padre?>" name="id_padre" hidden>
                                         <label for="">Nombre del rol</label>
                                         <!-- Lista desplegable para seleccionar el rol -->
                                         <div class="form-inline">
@@ -49,7 +58,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Nombres</label>
-                                        <input type="text" name="nombres" class="form-control" required>
+                                        <input type="text" name="nombres" value="<?=$nombres;?>" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -57,7 +66,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Apellidos</label>
-                                        <input type="text" name="apellidos" class="form-control" required>
+                                        <input type="text" name="apellidos" value="<?=$apellidos;?>" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +76,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Fecha de nacimiento</label>
-                                        <input type="date" name="fecha_nacimiento" class="form-control" required>
+                                        <input type="date" name="fecha_nacimiento" value="<?=$fecha_nacimiento;?>" class="form-control" required>
                                     </div>
                                 </div>  
   
@@ -76,14 +85,14 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Correo</label>
-                                        <input type="email" name="correo" class="form-control" required>
+                                        <input type="email" name="correo" value="<?=$correo;?>" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Código único de identificación (CUI)</label>
-                                        <input type="number" name="cui" class="form-control" required>
+                                        <input type="number" name="cui" value="<?=$cui;?>" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -96,7 +105,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Número de teléfono</label>
-                                        <input type="number" name="celular" class="form-control" required>
+                                        <input type="number" name="celular" value="<?=$celular;?>" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -104,7 +113,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="">Dirección</label>
-                                        <input type="text" name="direccion" class="form-control" required>
+                                        <input type="text" name="direccion" value="<?=$direccion;?>" class="form-control" required>
                                     </div>
                                 </div>         
                             </div>
@@ -119,7 +128,7 @@ include ('../../app/controllers/grados/listado_grados.php');
             <div class="row">
                 <!-- Tamaño del formulario -->
                 <div class="col-md-12">
-                    <div class="card card-outline card-info">
+                    <div class="card card-outline card-success">
                         <div class="card-header">
                             <h3 class="card-title">Ingrese los datos académicos del Estudiante</h3>
                         </div>
@@ -129,11 +138,10 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Nivel</label>
-                               
                                         <div class="form-inline">
                                             <select name="nivel_id" id="" class="form-control">
                                                 <?php foreach ($niveles as $nivele){ ?>
-                                                    <option value="<?=$nivele['id_nivel'];?>"><?=$nivele['nivel'];?></option>
+                                                    <option value="<?=$nivele['id_nivel'];?>" <?=$nivele['id_nivel']==$nivel_id ? 'selected': ''?> ><?=$nivele['nivel'];?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -147,7 +155,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                         <div class="form-inline">
                                             <select name="grado_id" id="" class="form-control">
                                                 <?php foreach ($grados as $grado){ ?>
-                                                    <option value="<?=$grado['id_grado'];?>"><?=$grado['grado']." - ".$grado['seccion'];?></option>
+                                                    <option value="<?=$grado['id_grado'];?>" <?=$grado['id_grado']==$grado_id ? 'selected': ''?> ><?=$grado['grado']." - ".$grado['seccion'];?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -167,7 +175,7 @@ include ('../../app/controllers/grados/listado_grados.php');
             <div class="row">
                 <!-- Tamaño del formulario -->
                 <div class="col-md-12">
-                    <div class="card card-outline card-warning">
+                    <div class="card card-outline card-success">
                         <div class="card-header">
                             <h3 class="card-title">Ingrese los datos de la persona encargada</h3>
                         </div>
@@ -177,21 +185,21 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Nombres</label>
-                                        <input type="text" name="nombres_pf" class="form-control" required>
+                                        <input type="text" name="nombres_pf" value="<?=$nombres_pf;?>" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Apellidos</label>
-                                        <input type="text" name="apellidos_pf" class="form-control" required>
+                                        <input type="text" name="apellidos_pf" value="<?=$apellidos_pf;?>" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Parentezco</label>
-                                        <input type="text" name="parentezco" class="form-control" required>
+                                        <input type="text" name="parentezco" value="<?=$parentezco;?>" class="form-control" required>
                                     </div>
                                 </div>
  
@@ -204,14 +212,14 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Número de teléfono</label>
-                                        <input type="number" name="celular_pf" class="form-control" required>
+                                        <input type="number" name="celular_pf" value="<?=$celular_pf;?>" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Código único de identificación (CUI)</label>
-                                        <input type="number" name="cui_pf" class="form-control" required>
+                                        <input type="number" name="cui_pf" value="<?=$cui_pf;?>" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -224,15 +232,15 @@ include ('../../app/controllers/grados/listado_grados.php');
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="">Nombre del encargado #2</label>
-                                        <input type="text" name="encargado_dos" class="form-control" required>
+                                        <label for="">Nombre y Apellido del encargado #2</label>
+                                        <input type="text" name="encargado_dos" value="<?=$encargado_dos;?>" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Número de teléfono Encargado #2</label>
-                                        <input type="number" name="numero_dos" class="form-control" required>
+                                        <input type="number" name="numero_dos" value="<?=$numero_dos;?>" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -251,7 +259,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                 <div class="col-md-12">
                    <div class="form-group">
                        <!-- Botones del formulario -->
-                      <button type="submit" class="btn btn-primary ">Registrar</button>
+                      <button type="submit" class="btn btn-success ">Actualizar</button>
                        <a href="<?=APP_URL;?>/admin/estudiantes" class="btn btn-secondary ">Cancelar</a>
                   </div>
                  </div>
