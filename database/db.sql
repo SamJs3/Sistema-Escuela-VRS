@@ -236,11 +236,12 @@ CREATE TABLE calificaciones (
   docente_id           INT (11) NOT NULL,
   estudiante_id        INT (11) NOT NULL,
   curso_id             INT (11) NOT NULL,
-  nota1                INT (11) NOT NULL,
-  nota2                INT (11) NOT NULL,
-  nota3                INT (11) NOT NULL,
-  nota4                INT (11) NOT NULL,
-  promedio             INT (11) NOT NULL,
+  nota1                INT (11) NULL,
+  nota2                INT (11) NULL,
+  nota3                INT (11) NULL,
+  nota4                INT (11) NULL,
+  promedio             INT (11) NULL,
+ 
 
   fyh_creacion   DATETIME NULL,
   fyh_actualizacion DATETIME NULL,

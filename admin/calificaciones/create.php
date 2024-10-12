@@ -64,10 +64,10 @@ foreach ($asignaciones as $asignacion) {
                     <th><center>Apellidos</center></th>
                     <th><center>Grado</center></th>
                     <th><center>Seccion</center></th>
-                    <th><center>Primera Unidad</center></th>
-                    <th><center>Segunda Unidad</center></th>
-                    <th><center>Tercera Unidad</center></th>
-                    <th><center>Cuarta Unidad</center></th>
+                    <th><center>I Unidad</center></th>
+                    <th><center>II Unidad</center></th>
+                    <th><center>III Unidad</center></th>
+                    <th><center>IV Unidad</center></th>
                     <th><center>Promedio</center></th>
                 </tr>
             </thead>  
@@ -112,17 +112,38 @@ foreach ($asignaciones as $asignacion) {
                              }
                         ?>
                         <td>
-                            <input style="text-align: center" value="<?=$nota1;?>" id="nota1_<?=$contador_estudiantes;?>" type="number" class="form-control">
-                        </td>
-                        <td>
-                            <input style="text-align: center" value="<?=$nota2;?>" id="nota2_<?=$contador_estudiantes;?>" type="number" class="form-control">
-                        </td>
-                        <td>
-                            <input  style="text-align: center" value="<?=$nota3;?>" id="nota3_<?=$contador_estudiantes;?>" type="number" class="form-control">
-                        </td>
-                        <td>
-                            <input  style="text-align: center" value="<?=$nota4;?>" id="nota4_<?=$contador_estudiantes;?>" type="number" class="form-control">
-                        </td>
+    <input 
+        style="text-align: center" 
+        value="<?= ($nota1 == 0) ? '-' : $nota1; ?>" 
+        id="nota1_<?=$contador_estudiantes;?>" 
+        type="text" 
+        class="form-control">
+</td>
+
+<td>
+    <input 
+        style="text-align: center" 
+        value="<?= ($nota2 == 0) ? '-' : $nota2; ?>" 
+        id="nota2_<?=$contador_estudiantes;?>" 
+        type="number" 
+        class="form-control">
+</td>
+<td>
+    <input 
+        style="text-align: center" 
+        value="<?= ($nota3 == 0) ? '-' : $nota3; ?>" 
+        id="nota3_<?=$contador_estudiantes;?>" 
+        type="number" 
+        class="form-control">
+</td>
+<td>
+    <input 
+        style="text-align: center" 
+        value="<?= ($nota4 == 0) ? '-' : $nota4; ?>" 
+        id="nota4_<?=$contador_estudiantes;?>" 
+        type="number" 
+        class="form-control">
+</td>
                         <td>
                             <input  style="text-align: center" value="<?=$promedio;?>" id="promedio_<?=$contador_estudiantes;?>" type="number" class="form-control" disabled>
                         </td>

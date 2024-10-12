@@ -4,24 +4,75 @@ session_start();
 if (isset($_SESSION['email recibido'])) {
   //echo "El usuario inicio sesion";
   $email_sesion = $_SESSION['email recibido'];
-
-  // Query que permite buscar el nombre del usuario activo en sesión y su rol
-  $query_sesion = $pdo->prepare("
+ /*  $query_sesion = $pdo->prepare("
       SELECT u.nombres, r.correo, u.apellidos
       FROM personas u
       JOIN usuarios r ON u.usuario_id = r.id_usuario
       WHERE r.correo = :email_sesion AND u.estado = '1' AND r.estado = '1' ");
   $query_sesion->bindParam(':email_sesion', $email_sesion, PDO::PARAM_STR);
-  $query_sesion->execute();
+  $query_sesion->execute(); */
 
-  $datos_usuario = $query_sesion->fetchAll(PDO::FETCH_ASSOC);
-  foreach ($datos_usuario as $datos_usuario) {
-      $correo_usuario = $datos_usuario['correo'];
-      $nombres_usuario = $datos_usuario['nombres'];
-      $apellidos_usuario = $datos_usuario['apellidos'];
+  $query = $pdo->prepare("SELECT * FROM usuarios AS usu
+  INNER JOIN roles AS rol ON rol.id_rol = usu.rol_id
+  INNER JOIN personas AS per ON per.usuario_id = usu.id_usuario
+  WHERE usu.correo = '$email_sesion' AND usu.estado = '1' ");
+$query->execute();
+
+  $datos_usuarios = $query->fetchAll(PDO::FETCH_ASSOC);
+  
+  foreach($datos_usuarios as $dato_usuario){
+    $correo_usuario = $dato_usuario['correo'];
+    $id_rol_sesion_usuario = $dato_usuario['id_rol'];
+    $rol_sesion_usuario = $dato_usuario['nombre_rol'];
+    $nombres_usuario = $dato_usuario['nombres'];
+    $apellidos_usuario = $dato_usuario['apellidos'];
+    $cui_sesion_usuario = $dato_usuario['cui'];
   }
-}
-else{
+
+  if($rol_sesion_usuario == "ESTUDIANTE"){
+      //header('Location: ' . APP_URL . "/login");
+  
+  }
+
+
+  /* $url = $_SERVER["PHP_SELF"]; //Con PHP_URI traigo lo que viene la ruta donde estoy ingresando con el index.php
+  $contador = strlen($url); //Cuento los caracteres que tiene dicha ruta
+  $rest = substr($url, 23, $contador); //Voy a sustraer y el restante que voy a sustraer
+                                            //va a ser de la url pero va a contar el fin ($contador) y el inicio 23 (nombre de la url + /)
+    $sql_roles_permisos = "SELECT * FROM roles_permisos AS rolper
+    INNER JOIN permisos AS per ON per.id_permiso = rolper.permiso_id
+    INNER JOIN roles AS rol ON rol.id_rol = rolper.rol_id
+    WHERE rolper.estado = '1'";
+    
+    $query_roles_permisos = $pdo->prepare($sql_roles_permisos);
+    $query_roles_permisos->execute();
+    
+    $roles_permisos = $query_roles_permisos->fetchAll(PDO::FETCH_ASSOC);
+
+//Para saber los permisos que tiene el usuario logeado
+    $contador_rol_permiso = 0; 
+    foreach($roles_permisos as $role_permiso){
+      if($id_rol_sesion_usuario == $role_permiso['rol_id']){
+        //$role_permiso['url'];
+        //Si el restante es igual a la url del permiso
+        if($rest == $role_permiso['url']){
+          //echo "Usuario autorizado";
+          $contador_rol_permiso++;
+        }else{
+          //echo "Usuario no autorizado";
+        }
+      }
+      
+    }
+    if($contador_rol_permiso>0){
+      //echo "ruta habilitada";
+    }else{
+      //echo "ruta no habilitada";
+      header('Location:'.APP_URL."/admin/no_autorizado.php");
+    }
+//Para saber los permisos que tiene el usuario logeado */
+
+  }else{
   echo "El usuario no inicio sesion";
   header('Location: ' . APP_URL . "/login");
 } 
@@ -138,9 +189,22 @@ else{
         <div class="image">
           <img src="https://cdn-icons-png.flaticon.com/128/1896/1896561.png" class="img-circle elevation-2" alt="User Image">
         </div>
+        <?php
+          // Separar el nombre completo y los apellidos
+          $nombre_partes = explode(" ", $nombres_usuario);
+          $apellido_partes = explode(" ", $apellidos_usuario);
+
+          // Tomar el primer nombre y el primer apellido
+          $primer_nombre = $nombre_partes[0];
+          $primer_apellido = $apellido_partes[0];
+        ?>
         <div class="info">
+          <a href="#" class="d-block"><?= $primer_nombre . " " . $primer_apellido; ?></a>
+        </div>
+
+        <!-- <div class="info">
           <a href="#" class="d-block"><?=$nombres_usuario." ".$apellidos_usuario;?></a>
-        </div>     
+        </div>      -->
       </div>
 
 
