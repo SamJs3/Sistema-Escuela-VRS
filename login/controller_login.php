@@ -29,6 +29,7 @@ if ($contador > 0 && password_verify($password, $password_columna)) {
     session_start();
     $_SESSION['mensaje'] = "Sesión Iniciada";
     $_SESSION['icono'] = "success";
+    
     $_SESSION['email recibido'] = $correo;
     header('Location: ' . APP_URL . "/admin");
     exit();

@@ -27,7 +27,7 @@ include ('../app/config.php');
   <style>
     /* Cambiar el color de fondo de la página de login */
     body.login-page {
-      background: #f4f6f9; /* Un fondo claro que combine con AdminLTE */
+      background: #f4f6f9; /color fondo
     }
   </style>
  

@@ -224,7 +224,7 @@ include ('../../app/controllers/grados/listado_grados.php');
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="">Nombre del encargado #2</label>
+                                        <label for="">Nombre y apellido del encargado #2</label>
                                         <input type="text" name="encargado_dos" class="form-control" required>
                                     </div>
                                 </div>

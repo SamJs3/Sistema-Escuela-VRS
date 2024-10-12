@@ -7,17 +7,18 @@ if (isset($_SESSION['email recibido'])) {
 
   // Query que permite buscar el nombre del usuario activo en sesión y su rol
   $query_sesion = $pdo->prepare("
-      SELECT u.correo, r.nombre_rol
-      FROM usuarios u
-      JOIN roles r ON u.rol_id = r.id_rol
-      WHERE u.correo = :email_sesion AND u.estado = '1' AND r.estado = '1' ");
+      SELECT u.nombres, r.correo, u.apellidos
+      FROM personas u
+      JOIN usuarios r ON u.usuario_id = r.id_usuario
+      WHERE r.correo = :email_sesion AND u.estado = '1' AND r.estado = '1' ");
   $query_sesion->bindParam(':email_sesion', $email_sesion, PDO::PARAM_STR);
   $query_sesion->execute();
 
   $datos_usuario = $query_sesion->fetchAll(PDO::FETCH_ASSOC);
   foreach ($datos_usuario as $datos_usuario) {
-      $nombre_usuario = $datos_usuario['correo'];
-      $nombre_rol = $datos_usuario['nombre_rol'];
+      $correo_usuario = $datos_usuario['correo'];
+      $nombres_usuario = $datos_usuario['nombres'];
+      $apellidos_usuario = $datos_usuario['apellidos'];
   }
 }
 else{
@@ -42,6 +43,9 @@ else{
   <link rel="stylesheet" href="<?php echo APP_URL;?>../public/plugins/fontawesome-free/css/all.min.css"> 
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=APP_URL;?>/public/dist/css/adminlte.min.css">
+
+  <!-- jQuery -->
+<script src="<?php echo APP_URL;?>/public/plugins/jquery/jquery.min.js"></script>
   
   
   <!-- SweetAlert Extension -->
@@ -135,7 +139,7 @@ else{
           <img src="https://cdn-icons-png.flaticon.com/128/1896/1896561.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?=$nombre_rol;?></a>
+          <a href="#" class="d-block"><?=$nombres_usuario." ".$apellidos_usuario;?></a>
         </div>     
       </div>
 
@@ -164,6 +168,27 @@ else{
                 <a href="<?=APP_URL;?>/admin/estudiantes" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listado de estudiantes</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-card-checklist"></i></i></i>
+              <p>
+                Calificaciones
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/calificaciones" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ingresar calificaciones</p>
                 </a>
               </li>
             </ul>

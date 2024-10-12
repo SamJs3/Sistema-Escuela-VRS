@@ -57,6 +57,39 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                 </div>
               </div>
 
+<!--               <div class="col-lg-4 col-6">
+                <div class="small-box shadow-sm" style="background-color: #f0f2f5; border-left: 5px solid #ff5e62; border-radius: 8px;">
+                  <div class="inner">
+                    <?php $contador_estudiante = count($estudiantes); ?>
+                    <h3 class="text-dark"><?=$contador_estudiante?></h3>
+                    <p class="text-muted">Estudiantes registrados</p>
+                  </div>
+                  <div class="icon" style="font-size: 48px; color: #ff5e62;">
+                    <i class="bi bi-person-badge"></i>
+                  </div>
+                  <a href="<?=APP_URL?>/admin/estudiantes" class="small-box-footer" style="color: #ff5e62;">
+                    Modulo Estudiantes <i class="fas fa-arrow-circle-right"></i>
+                  </a>
+                </div>
+              </div> -->
+
+              <div class="col-lg-4 col-6">
+                <div class="small-box" style="background-color: #1f1f1f; border-radius: 12px;">
+                  <div class="inner">
+                    <?php $contador_estudiante = count($estudiantes); ?>
+                    <h3 class="text-white"><?=$contador_estudiante?></h3>
+                    <p class="text-white-50">Calificaciones</p>
+                  </div>
+                  <div class="icon" style="font-size: 48px; color: #ff9966;">
+                      <i class="bi bi-card-checklist"></i>
+                  </div>
+                  <a href="<?=APP_URL?>/admin/calificaciones" class="small-box-footer" style="color: #ff9966;">
+                    Modulo Calificaciones <i class="fas fa-arrow-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+
+
 
               <!-- configuracion del widget de docentes -->
             <div class="col-lg-4 col-6">
