@@ -45,7 +45,7 @@ include ('../../app/controllers/configuraciones/datos_año/listado_de_años.php'
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Niveles</label>
+                                            <label for="">Nivel</label>
                                             <select name="nivel" id="" class="form-control">
                                                 <option value="Pre-primaria">Pre-primaria</option>
                                                 <option value="Primaria">Primaria</option>
@@ -53,17 +53,17 @@ include ('../../app/controllers/configuraciones/datos_año/listado_de_años.php'
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Turnos</label>
                                             <select name="turno" id="" class="form-control">
-                                                <!-- <option value="Mañana">Mañana</option> -->
+                                                // <option value="Mañana">Mañana</option> 
                                                 <option value="Tarde">Tarde</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">

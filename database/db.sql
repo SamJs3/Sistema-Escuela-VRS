@@ -76,6 +76,62 @@ CREATE TABLE docentes (
 
 )ENGINE=InnoDB;
 
+/* tabla año escolar */
+CREATE TABLE año_escolar(
+
+  id_periodo      INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  periodo         VARCHAR (255) NOT NULL,
+
+  fyh_creacion   DATETIME NULL,
+  fyh_actualizacion DATETIME NULL,
+  estado        VARCHAR (11)
+
+)ENGINE=InnoDB;
+
+INSERT INTO año_escolar (periodo,fyh_creacion,estado)
+VALUES ('Año 2024','2024-09-06 20:29:10','1');
+
+
+/* Tabla de niveles */
+CREATE TABLE niveles (
+id_nivel       INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+periodo_id     INT (11) NOT NULL,
+nivel          VARCHAR (255) NOT NULL,
+turno          VARCHAR (255) NOT NULL,
+
+fyh_creacion   DATETIME NULL,
+fyh_actualizacion DATETIME NULL,
+estado        VARCHAR (11),
+
+FOREIGN KEY (periodo_id) REFERENCES año_escolar (id_periodo) ON DELETE NO ACTION ON UPDATE CASCADE
+
+)ENGINE=InnoDB;
+
+INSERT INTO niveles (periodo_id,nivel,turno,fyh_creacion,estado)
+VALUES (1,'Pre-Primaria','Tarde','2024-09-13 20:29:10','1');
+
+
+/* Tabla de grados */
+CREATE TABLE grados (
+
+  id_grado       INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nivel_id       INT (11) NOT NULL,
+  grado          VARCHAR (255) NOT NULL,
+  seccion        VARCHAR (255) NOT NULL,
+
+  fyh_creacion   DATETIME NULL,
+  fyh_actualizacion DATETIME NULL,
+  estado        VARCHAR (11),
+
+  FOREIGN KEY (nivel_id) REFERENCES niveles (id_nivel) ON DELETE NO ACTION ON UPDATE CASCADE
+
+)ENGINE=InnoDB;
+
+INSERT INTO grados (nivel_id,grado,seccion,fyh_creacion,estado)
+VALUES (1,'Parvulos','A','2024-09-20 15:05:10','1');
+
+
+
 
 /* Tabla Estudiantes */
 CREATE TABLE estudiantes (
@@ -139,59 +195,8 @@ INSERT INTO datos_institucion (nombre_institucion,logo,direccion,telefono,correo
 VALUES ('Escuela Vicente R Sánchez','logo.jpg','Plazuela el Calvario zona 1 Quetzaltenango','5575044','vrsanchez.admn@gmail.com','2024-09-05 02:35:18');
 
 
-/* tabla de gestiones */
-CREATE TABLE año_escolar(
-
-  id_periodo      INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  periodo         VARCHAR (255) NOT NULL,
-
-  fyh_creacion   DATETIME NULL,
-  fyh_actualizacion DATETIME NULL,
-  estado        VARCHAR (11)
-
-)ENGINE=InnoDB;
-
-INSERT INTO año_escolar (periodo,fyh_creacion,estado)
-VALUES ('Año 2024','2024-09-06 20:29:10','1');
 
 
-/* Tabla de niveles */
-CREATE TABLE niveles (
-id_nivel       INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-periodo_id     INT (11) NOT NULL,
-nivel          VARCHAR (255) NOT NULL,
-turno          VARCHAR (255) NOT NULL,
-
-fyh_creacion   DATETIME NULL,
-fyh_actualizacion DATETIME NULL,
-estado        VARCHAR (11),
-
-FOREIGN KEY (periodo_id) REFERENCES año_escolar (id_periodo) ON DELETE NO ACTION ON UPDATE CASCADE
-
-)ENGINE=InnoDB;
-
-INSERT INTO niveles (periodo_id,nivel,turno,fyh_creacion,estado)
-VALUES (1,'Pre-Primaria','Tarde','2024-09-13 20:29:10','1');
-
-
-/* Tabla de grados */
-CREATE TABLE grados (
-
-  id_grado       INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  nivel_id       INT (11) NOT NULL,
-  grado          VARCHAR (255) NOT NULL,
-  seccion        VARCHAR (255) NOT NULL,
-
-  fyh_creacion   DATETIME NULL,
-  fyh_actualizacion DATETIME NULL,
-  estado        VARCHAR (11),
-
-  FOREIGN KEY (nivel_id) REFERENCES niveles (id_nivel) ON DELETE NO ACTION ON UPDATE CASCADE
-
-)ENGINE=InnoDB;
-
-INSERT INTO grados (nivel_id,grado,seccion,fyh_creacion,estado)
-VALUES (1,'Parvulos','A','2024-09-20 15:05:10','1');
 
 
 /* Tabla de cursos */

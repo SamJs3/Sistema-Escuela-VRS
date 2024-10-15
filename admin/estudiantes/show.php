@@ -237,7 +237,7 @@ include ('../../app/controllers/estudiantes/datos_estudiante.php');
                 <div class="col-md-12">
                    <div class="form-group">
                        <!-- Botones del formulario -->
-
+                       <button onclick="window.print();" class="btn btn-primary">Imprimir</button>
                        <a href="<?=APP_URL;?>/admin/estudiantes" class="btn btn-secondary ">Volver</a>
                   </div>
                  </div>

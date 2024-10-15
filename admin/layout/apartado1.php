@@ -129,51 +129,20 @@ $query->execute();
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      
-
       <!-- Codigo para mensajes del panel principal -->
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
+      <!-- Boton pantalla completa -->
+    
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
+
+
+  <!-- Icono y titulo principal de barra izquierda del menu principal -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?=APP_URL;?>/admin" class="brand-link" >
@@ -182,7 +151,7 @@ $query->execute();
 
     </a>
 
-    <!-- Sidebar -->
+    <!-- Icono y nombres del usuario -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -214,31 +183,37 @@ $query->execute();
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+        <!-- vuelve un poco mas interactivo el boton / le da un tono de sombra al pasar el mouse encima  -->
+          <style>
+          .nav-link.active:hover {
+              box-shadow: 4px 4px 12px rgba(0,0,0,0.3); /* Aumenta la sombra al pasar el mouse */
+              transform: translateY(-2px); /* Pequeño efecto de desplazamiento */
+          }
+          </style>
+
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <!-- nombre segunda opcion de barra izquierda -->
-              <i class="nav-icon fas"><i class="bi bi-person-badge"></i></i>
-              <p>
-                Estudiantes
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-                <!-- configuracion y llamado a opcion de listado de -->
-                <a href="<?=APP_URL;?>/admin/estudiantes" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listado de estudiantes</p>
-                </a>
-              </li>
-            </ul>
+              <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+                  <i class="nav-icon fas bi bi-person-badge" style="font-size: 1.2em;"></i>
+                  <p>
+                      Estudiantes
+                      <i class="right fas fa-angle-left"></i>
+                  </p>
+              </a>
+              <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                      <a href="<?=APP_URL;?>/admin/estudiantes" class="nav-link active">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Listado de estudiantes</p>
+                      </a>
+                  </li>
+              </ul>
           </li>
 
+
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-card-checklist"></i></i></i>
               <p>
@@ -261,7 +236,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-person-vcard"></i></i>
               <p>
@@ -290,7 +265,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-journals"></i></i>
               <p>
@@ -312,7 +287,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-list-ol"></i></i>
               <p>
@@ -334,7 +309,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-bar-chart-steps"></i></i>
               <p>
@@ -356,7 +331,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre primer opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-tags"></i></i>
               <p>
@@ -378,7 +353,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-people"></i></i>
               <p>
@@ -399,8 +374,9 @@ $query->execute();
           </li>
 
 
+
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <i class="nav-icon fas"><i class="bi bi-person-plus"></i></i>
               <p>
                 Inscripciones
@@ -420,8 +396,9 @@ $query->execute();
           </li>
 
 
+
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-person-fill-check"></i></i>
               <p>
@@ -443,7 +420,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <i class="nav-icon fas"><i class="bi bi-gear-fill"></i></i>
               <p>
                 Configuraciones

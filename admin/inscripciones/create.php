@@ -36,7 +36,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                         <div class="form-inline">
                                             <select name="rol_id" id="" class="form-control">
                                                 <?php foreach ($roles as $role){ ?>
-                                                    <option value="<?=$role['id_rol'];?>" <?=$role['nombre_rol']=="ESTUDIANTE" ? 'selected': ''?> >
+                                                    <option value="<?=$role['id_rol'];?>" <?=$role['nombre_rol']=="ESTUDIANTE" ? 'selected': ''?>>
                                                         <?=$role['nombre_rol'];?>
                                                     </option>
                                                 <?php } ?>

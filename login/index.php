@@ -61,10 +61,10 @@ include ('../app/config.php');
       <form action="controller_login.php" method="post">
         <div class="input-group mb-3">
           <!-- informacion de box de correo -->
-          <input type="email" name="correo" class="form-control" placeholder="Correo">
+          <input type="email" name="correo" class="form-control" placeholder="Usuario">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>

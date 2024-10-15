@@ -41,14 +41,14 @@ include ('../../app/controllers/niveles/datos_nivel.php');
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Turno</label>
                                             <p><?=$turno;?></p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
