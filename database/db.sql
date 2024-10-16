@@ -257,3 +257,26 @@ CREATE TABLE calificaciones (
   FOREIGN KEY (estudiante_id) REFERENCES estudiantes (id_estudiante) ON DELETE NO ACTION ON UPDATE CASCADE
 
 )ENGINE=InnoDB;
+
+
+CREATE TABLE observaciones (
+
+  id_observacion       INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  docente_id           INT (11) NOT NULL,
+  estudiante_id        INT (11) NOT NULL,
+  curso_id             INT (11) NOT NULL,
+  observacion          VARCHAR (255) NULL,
+  fecha                VARCHAR (50) NULL,   
+  nota                 TEXT NOT NULL,
+  
+ 
+
+  fyh_creacion   DATETIME NULL,
+  fyh_actualizacion DATETIME NULL,
+  estado        VARCHAR (11),
+
+  FOREIGN KEY (docente_id) REFERENCES docentes (id_docente) ON DELETE NO ACTION ON UPDATE CASCADE,
+  FOREIGN KEY (curso_id) REFERENCES cursos (id_curso) ON DELETE NO ACTION ON UPDATE CASCADE,
+  FOREIGN KEY (estudiante_id) REFERENCES estudiantes (id_estudiante) ON DELETE NO ACTION ON UPDATE CASCADE
+
+)ENGINE=InnoDB;

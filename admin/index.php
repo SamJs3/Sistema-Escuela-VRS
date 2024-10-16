@@ -32,22 +32,10 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
 
   
         <br>
-          <!-- WIDGETS HABILITADOS PARA ESTUDIANTE -->
-          <?php if($rol_sesion_usuario == "ESTUDIANTE"){ ?>
-          
-            <?php
-          }?>
-
-
-
-
-
- 
-          <!-- WIDGETS HABILITADOS PARA EL ADMINISTRADOR -->
-          <?php
-          if($rol_sesion_usuario == "ADMINISTRADOR"){ ?>
-              <div class="row">
-
+         <!-- WIDGETS HABILITADOS PARA EL ADMINISTRADOR -->
+         <?php
+          if($rol_sesion_usuario == "DOCENTE"){ ?>
+             <div class="row">
 
             <!-- configuracion del widget de estudiantes -->
               <div class="col-lg-4 col-6">
@@ -88,6 +76,95 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                   </a>
               </div>
               </div>
+
+               <!-- configuracion del widget de calificaciones -->
+               <div class="col-lg-4 col-6">
+              <div class="small-box" style="background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to right, #43cea2, #185a9d); background-blend-mode: overlay; border-radius: 12px;">
+                  <div class="inner text-white">
+                      <?php $contador_estudiante = count($estudiantes); ?>
+                      <h3>Modulo</h3>
+                      <p>Observaciones</p>
+                  </div>
+                  <div class="icon" >
+                  <i class="bi bi-exclamation-square-fill"></i>
+                  </div>
+                  <a href="<?=APP_URL?>/admin/observaciones" class="small-box-footer text-white" style="color: #43cea2;">
+                      Módulo de Observaciones <i class="fas fa-arrow-circle-right"></i>
+                  </a>
+              </div>
+              </div>
+   
+
+</div>
+
+<?php } ?> 
+              
+
+
+ 
+          <!-- WIDGETS HABILITADOS PARA EL ADMINISTRADOR -->
+          <?php
+          if($rol_sesion_usuario == "ADMINISTRADOR"){ ?>
+             <div class="row">
+
+            <!-- configuracion del widget de estudiantes -->
+              <div class="col-lg-4 col-6">
+              <div class="small-box" style="background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to right, #6a11cb, #2575fc); background-blend-mode: overlay;">
+                  <div class="inner text-white">
+                    <?php
+                    $contador_estudiante = 0;
+                    foreach($estudiantes as $estudiante){
+                        $contador_estudiante++;
+                    }
+                    ?>
+                    <h3><?=$contador_estudiante?></h3>
+                    <p>Estudiantes registrados</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-person-badge"></i>
+                  </div>
+                  <a href="<?=APP_URL?>/admin/estudiantes" class="small-box-footer text-white">
+                    Modulo Estudiantes <i class="fas fa-arrow-circle-right"></i>
+                  </a>
+              </div>
+            </div>
+
+
+            <!-- configuracion del widget de calificaciones -->
+              <div class="col-lg-4 col-6">
+              <div class="small-box" style="background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to right, #43cea2, #185a9d); background-blend-mode: overlay; border-radius: 12px;">
+                  <div class="inner text-white">
+                      <?php $contador_estudiante = count($estudiantes); ?>
+                      <h3>Modulo</h3>
+                      <p>Calificaciones</p>
+                  </div>
+                  <div class="icon" style="font-size: 48px; color: white;">
+                      <i class="bi bi-card-checklist"></i>
+                  </div>
+                  <a href="<?=APP_URL?>/admin/calificaciones" class="small-box-footer text-white" style="color: #43cea2;">
+                      Módulo Calificaciones <i class="fas fa-arrow-circle-right"></i>
+                  </a>
+              </div>
+              </div>
+
+               <!-- configuracion del widget de calificaciones -->
+               <div class="col-lg-4 col-6">
+              <div class="small-box" style="background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to right, #43cea2, #185a9d); background-blend-mode: overlay; border-radius: 12px;">
+                  <div class="inner text-white">
+                      <?php $contador_estudiante = count($estudiantes); ?>
+                      <h3>Modulo</h3>
+                      <p>Observaciones</p>
+                  </div>
+                  <div class="icon" style="font-size: 48px; color: white;">
+                  <i class="bi bi-exclamation-square-fill"></i>
+                  </div>
+                  <a href="<?=APP_URL?>/admin/observaciones" class="small-box-footer text-white" style="color: #43cea2;">
+                      Módulo de Observaciones <i class="fas fa-arrow-circle-right"></i>
+                  </a>
+              </div>
+              </div>
+
+              
 
 
 

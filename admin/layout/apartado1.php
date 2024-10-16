@@ -27,6 +27,8 @@ $query->execute();
     $nombres_usuario = $dato_usuario['nombres'];
     $apellidos_usuario = $dato_usuario['apellidos'];
     $cui_sesion_usuario = $dato_usuario['cui'];
+
+    
   }
 
   if($rol_sesion_usuario == "ESTUDIANTE"){
@@ -169,7 +171,16 @@ $query->execute();
         ?>
         <div class="info">
           <a href="#" class="d-block"><?= $primer_nombre . " " . $primer_apellido; ?></a>
+            <div class="d-block" style="margin-top: 5px;">
+              <a href="#" class="d-block"><?= $rol_sesion_usuario; ?></a>
+            </div>
+            <div class="d-block" style="margin-top: 5px;">
+              <a href="#" class="d-block"><?= $email_sesion; ?></a>
+            </div>
         </div>
+        
+      
+
 
         <!-- <div class="info">
           <a href="#" class="d-block"><?=$nombres_usuario." ".$apellidos_usuario;?></a>
@@ -228,6 +239,28 @@ $query->execute();
                 <a href="<?=APP_URL;?>/admin/calificaciones" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ingresar calificaciones</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-exclamation-square-fill"></i></i></i>
+              <p>
+                Observaciones
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/observaciones" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Nueva observacion</p>
                 </a>
               </li>
             </ul>

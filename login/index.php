@@ -27,7 +27,7 @@ include ('../app/config.php');
   <style>
     /* Cambiar el color de fondo de la página de login */
     body.login-page {
-      background: #f4f6f9; /color fondo
+      background: #f4f6f7; /color fondo
     }
   </style>
  
@@ -42,7 +42,7 @@ include ('../app/config.php');
   <div class="login-logo">
   <center>
         <br>
-        <img src="../Asset/logo.jpg"
+        <img src="../Asset/logoVRS1.jpg"
              width="225px" alt=""><br><br>
     </center>
 

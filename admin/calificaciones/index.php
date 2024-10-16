@@ -1,4 +1,5 @@
 <!-- llamada al resto de configuraciones -->
+<!-- llamada al resto de configuraciones -->
 <?php 
 include ('../../app/config.php');
 include ('../../admin/layout/apartado1.php');
@@ -13,6 +14,9 @@ foreach ($asignaciones as $asignacione) {
     $seccion = $asignacione ['seccion'];
 }
 }
+
+
+
 
 
 
@@ -42,20 +46,19 @@ foreach ($asignaciones as $asignacione) {
           </div>
 
           <div class="card-body">
-            
-          <table class="table table-striped table-bordered table-hover table-sm">
+          <table id="example1" class="table table-striped table-bordered table-hover table-sm">
             <thead class="thead-dark">
                 <tr>
-                    <!-- <th><center>Nro</center></th> -->
-                    <th><center>Nivel</center></th>
+                     <!-- <th><center>Nro</center></th> -->
+                     <th><center>Nivel</center></th>
                     <th><center>Grado</center></th>
                     <th><center>Seccion</center></th>
                     <th><center>Curso</center></th>
                     <th><center>Acciones</center></th>
                 </tr>
             </thead>  
-                <tbody>
-                    <?php
+            <tbody>
+            <?php
                     $contador =0;
                     foreach ($asignaciones as $asignacione){
 
@@ -81,8 +84,9 @@ foreach ($asignaciones as $asignacione) {
                         }
                     }
                     ?>
-                </tbody>
 
+
+          </tbody>
           </table> 
           </div>
 
@@ -114,3 +118,83 @@ include ('../../layout/mensajes.php');
 
 
 
+<!-- Configuracion de opciones de la tabla de listado de roles -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      /* "buttons": [
+        {
+          extend: 'copy',
+          text: 'Copiar'
+        },
+        {
+          extend: 'csv',
+          text: 'CSV'
+        },
+        {
+          extend: 'excel',
+          text: 'Excel'
+        },
+        {
+          extend: 'pdf',
+          text: 'PDF'
+        },
+        {
+          extend: 'print',
+          text: 'Imprimir'
+        },
+        {
+          extend: 'colvis',
+          text: 'Visibilidad de columnas'
+        }
+      ], */
+      "language": {
+        "decimal": ",",
+        "thousands": ".",
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "Ningún dato disponible en esta tabla",
+        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+          "sFirst": "Primero",
+          "sLast": "Último",
+          "sNext": "Siguiente",
+          "sPrevious": "Anterior"
+        },
+        "oAria": {
+          "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        },
+        "buttons": {
+          "copyTitle": 'Copiado al portapapeles',
+          "copySuccess": {
+            _: '%d líneas copiadas',
+            1: '1 línea copiada'
+          },
+          "colvis": 'Visibilidad de columnas'
+        }
+      }
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true
+    });
+  });
+</script>

@@ -36,8 +36,9 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                 <tr>
                     <th><center>Nro</center></th>
                     <th><center>Rol</center></th>
+                    <th><center>Nombres</center></th>
+                    <th><center>Apellidos</center></th>
                     <th><center>Correo</center></th>
-                    <th><center>Fecha de creación</center></th>
                     <th><center>Estado</center></th>
                     <th><center>Acciones</center></th>
                 </tr>
@@ -52,8 +53,9 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
               <tr>
                   <td style="text-align: center"><?=$contador_usuarios;?></td>
                   <td style="text-align: center"><?=$usuario['nombre_rol'];?></td>
+                  <td style="text-align: center"><?=$usuario['nombres'];?></td>
+                  <td style="text-align: center"><?=$usuario['apellidos'];?></td>
                   <td style="text-align: center"><?=$usuario['correo'];?></td>
-                  <td style="text-align: center"><?=$usuario['fyh_creacion'];?></td>
                   <td style="text-align: center">
                           <?php
                           if ($usuario['estado'] == "1") {

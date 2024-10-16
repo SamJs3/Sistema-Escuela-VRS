@@ -113,7 +113,7 @@ include ('../../layout/mensajes.php');
       "responsive": true,
       "lengthChange": false,
       "autoWidth": false,
-      "pageLength": 5,
+      "pageLength": 10,
       "buttons": [
         {
           extend: 'copy',
