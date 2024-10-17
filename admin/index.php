@@ -104,7 +104,7 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
  
           <!-- WIDGETS HABILITADOS PARA EL ADMINISTRADOR -->
           <?php
-          if($rol_sesion_usuario == "ADMINISTRADOR"){ ?>
+          if($rol_sesion_usuario == "ADMINISTRADOR" || $rol_sesion_usuario == "DIRECTOR" ){ ?>
              <div class="row">
 
             <!-- configuracion del widget de estudiantes -->
@@ -155,7 +155,7 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                       <h3>Modulo</h3>
                       <p>Observaciones</p>
                   </div>
-                  <div class="icon" style="font-size: 48px; color: white;">
+                  <div class="icon" style="font-size: 48px; color: grey;">
                   <i class="bi bi-exclamation-square-fill"></i>
                   </div>
                   <a href="<?=APP_URL?>/admin/observaciones" class="small-box-footer text-white" style="color: #43cea2;">

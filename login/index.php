@@ -48,7 +48,7 @@ include ('../app/config.php');
 
   <div class="login-logo">
         <h3 href=""><b>Escuela</b></h3>
-        <h3 href=""><b>Vicente R. Sanchez</b></h3>
+        <h3 href=""><b>Vicente R. Sánchez</b></h3>
     </div>
 
   </div>

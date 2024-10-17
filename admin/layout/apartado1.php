@@ -158,7 +158,7 @@ $query->execute();
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="https://cdn-icons-png.flaticon.com/128/1896/1896561.png" class="img-circle elevation-2" alt="User Image">
+          <img src="https://cdn-icons-png.flaticon.com/128/17612/17612839.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <?php
           // Separar el nombre completo y los apellidos
