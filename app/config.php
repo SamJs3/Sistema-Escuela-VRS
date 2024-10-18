@@ -8,7 +8,7 @@ define('APP_NAME','ESCUELA VICENTE R. SANCHEZ');//Nombre de la aplicacion
 define('APP_URL','http://localhost/Sistema-Escuela-VRS'); 
 define('KEY_API_MAPS',''); //Api para google maps 
 
-
+ 
 
 $servidor = "mysql:dbname=".BD.";host=".SERVIDOR;
 

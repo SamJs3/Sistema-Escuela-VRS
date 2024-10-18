@@ -27,6 +27,7 @@ $query->execute();
     $nombres_usuario = $dato_usuario['nombres'];
     $apellidos_usuario = $dato_usuario['apellidos'];
     $cui_sesion_usuario = $dato_usuario['cui'];
+    
 
     
   }
@@ -174,9 +175,9 @@ $query->execute();
             <div class="d-block" style="margin-top: 5px;">
               <a href="#" class="d-block"><?= $rol_sesion_usuario; ?></a>
             </div>
-            <div class="d-block" style="margin-top: 5px;">
+            <!-- <div class="d-block" style="margin-top: 5px;">
               <a href="#" class="d-block"><?= $email_sesion; ?></a>
-            </div>
+            </div> -->
         </div>
         
       
