@@ -238,6 +238,7 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                       <h3>Modulo</h3>
                       <p>Observaciones</p>
                   </div>
+                  <div class="icon" style="font-size: 48px; color: grey;">
                   <div class="icon">
                   <i class="bi bi-exclamation-square-fill"></i>
                   </div>
