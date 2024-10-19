@@ -239,7 +239,7 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                       <p>Observaciones</p>
                   </div>
                   <div class="icon" style="font-size: 48px; color: grey;">
-                  <div class="icon">
+           
                   <i class="bi bi-exclamation-square-fill"></i>
                   </div>
                   <a href="<?=APP_URL?>/admin/observaciones" class="small-box-footer text-white" style="color: #43cea2;">
