@@ -374,12 +374,20 @@ $query->execute();
               </p>
             </a>
             <ul class="nav nav-treeview">
-
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado roles -->
                 <a href="<?=APP_URL;?>/admin/roles" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listado de roles</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado roles -->
+                <a href="<?=APP_URL;?>/admin/permisos/index.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Asignar permisos</p>
                 </a>
               </li>
             </ul>
