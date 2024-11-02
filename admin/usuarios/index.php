@@ -24,9 +24,9 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
           <div class="card card-outline card-primary">
           <div class="card-header">
           <h3 class="card-title">Usuarios registrados</h3>
-          <div class="card-tools">
+          <!-- <div class="card-tools">
             <a href="create.php" class="btn btn-primary">Crear nuevo usuario</a>
-          </div>
+          </div> -->
 
           </div>
 

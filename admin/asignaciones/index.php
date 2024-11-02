@@ -280,7 +280,7 @@ include ('../../layout/mensajes.php');
 
 
 <!-- Configuracion de opciones de la tabla de listado de roles -->
-<script>
+<!-- <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true,
@@ -358,7 +358,7 @@ include ('../../layout/mensajes.php');
       "responsive": true
     });
   });
-</script>
+</script> -->
 
 <!-- Modal -->
 <div class="modal fade" id="modal_asignacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

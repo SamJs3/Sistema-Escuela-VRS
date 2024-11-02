@@ -27,57 +27,50 @@ $query->execute();
     $nombres_usuario = $dato_usuario['nombres'];
     $apellidos_usuario = $dato_usuario['apellidos'];
     $cui_sesion_usuario = $dato_usuario['cui'];
-    
-
-    
   }
 
-  if($rol_sesion_usuario == "ESTUDIANTE"){
-      //header('Location: ' . APP_URL . "/login");
+
+  $url = $_SERVER["PHP_SELF"];
+  $conta = strlen($url);
+  //contador de url
+  $rest = substr($url, 20, $conta);
+
+  $sql_roles_permisos = "SELECT * FROM roles_permisos AS rolper
+  INNER JOIN permisos AS per ON per.id_permiso = rolper.permiso_id
+  INNER JOIN roles AS rol ON rol.id_rol = rolper.rol_id
+  WHERE rolper.estado = '1' ";
+
+  $query_roles_permisos = $pdo->prepare($sql_roles_permisos);
+  $query_roles_permisos->execute();
+
+  $roles_permisos = $query_roles_permisos->fetchAll(PDO::FETCH_ASSOC);
   
+  $contadorpermiso = 0;
+  foreach ($roles_permisos as $rol_permiso){
+      if ($id_rol_sesion_usuario == $rol_permiso['rol_id']){
+        if($rest == $rol_permiso['url']){
+            //echo "permiso autorizado";
+            $contadorpermiso = $contadorpermiso + 1;
+        }else{
+            //echo "Permiso no autorizado ";
+        }
+
+      } 
+  }
+  
+  if ($contadorpermiso >0){
+    //echo "permiso autorizado";
+  }else{
+    //echo "permiso no autorizado";
+    header('Location:'.APP_URL."/admin/no_permiso.php");
   }
 
-
-  /* $url = $_SERVER["PHP_SELF"]; //Con PHP_URI traigo lo que viene la ruta donde estoy ingresando con el index.php
-  $contador = strlen($url); //Cuento los caracteres que tiene dicha ruta
-  $rest = substr($url, 23, $contador); //Voy a sustraer y el restante que voy a sustraer
-                                            //va a ser de la url pero va a contar el fin ($contador) y el inicio 23 (nombre de la url + /)
-    $sql_roles_permisos = "SELECT * FROM roles_permisos AS rolper
-    INNER JOIN permisos AS per ON per.id_permiso = rolper.permiso_id
-    INNER JOIN roles AS rol ON rol.id_rol = rolper.rol_id
-    WHERE rolper.estado = '1'";
-    
-    $query_roles_permisos = $pdo->prepare($sql_roles_permisos);
-    $query_roles_permisos->execute();
-    
-    $roles_permisos = $query_roles_permisos->fetchAll(PDO::FETCH_ASSOC);
-
-//Para saber los permisos que tiene el usuario logeado
-    $contador_rol_permiso = 0; 
-    foreach($roles_permisos as $role_permiso){
-      if($id_rol_sesion_usuario == $role_permiso['rol_id']){
-        //$role_permiso['url'];
-        //Si el restante es igual a la url del permiso
-        if($rest == $role_permiso['url']){
-          //echo "Usuario autorizado";
-          $contador_rol_permiso++;
-        }else{
-          //echo "Usuario no autorizado";
-        }
-      }
-      
-    }
-    if($contador_rol_permiso>0){
-      //echo "ruta habilitada";
-    }else{
-      //echo "ruta no habilitada";
-      header('Location:'.APP_URL."/admin/no_autorizado.php");
-    }
-//Para saber los permisos que tiene el usuario logeado */
+  $id_rol_sesion_usuario;
+  
 
   }else{
   echo "El usuario no inicio sesion";
-  header('Location: ' . APP_URL . "/login");
+  //header('Location: ' . APP_URL . "/login");
 } 
 ?>
 
@@ -104,6 +97,9 @@ $query->execute();
   
   <!-- SweetAlert Extension -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
   <!-- Iconos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -203,17 +199,17 @@ $query->execute();
           }
           </style>
 
-
-
-          <li class="nav-item">
-              <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+<?php
+    if(($rol_sesion_usuario == "ADMINISTRADOR") || ($rol_sesion_usuario == "DIRECTOR") || ($rol_sesion_usuario == "DIRECTOR ADMINISTRATIVO")){ ?>
+        <li class="nav-item">
+              <a href="#" class="nav-link active" id="toggleEstudiantes" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
                   <i class="nav-icon fas bi bi-person-badge" style="font-size: 1.2em;"></i>
                   <p>
                       Estudiantes
                       <i class="right fas fa-angle-left"></i>
                   </p>
               </a>
-              <ul class="nav nav-treeview">
+              <ul class="nav nav-treeview" style="display: none;">
                   <li class="nav-item">
                       <a href="<?=APP_URL;?>/admin/estudiantes" class="nav-link active">
                           <i class="far fa-circle nav-icon"></i>
@@ -225,7 +221,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleCalificaciones" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-card-checklist"></i></i></i>
               <p>
@@ -233,7 +229,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -247,7 +243,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleObs" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-exclamation-square-fill"></i></i></i>
               <p>
@@ -255,7 +251,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;" >
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -270,7 +266,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleDocentes" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-person-vcard"></i></i>
               <p>
@@ -278,7 +274,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -299,7 +295,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleCursos" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-journals"></i></i>
               <p>
@@ -307,7 +303,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -321,7 +317,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleGrados" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-list-ol"></i></i>
               <p>
@@ -329,7 +325,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -343,7 +339,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleNiveles" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-bar-chart-steps"></i></i>
               <p>
@@ -351,7 +347,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -365,7 +361,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleRoles" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre primer opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-tags"></i></i>
               <p>
@@ -373,7 +369,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado roles -->
                 <a href="<?=APP_URL;?>/admin/roles" class="nav-link active">
@@ -395,7 +391,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleUsuarios" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-people"></i></i>
               <p>
@@ -403,7 +399,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -418,14 +414,14 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active"  id="toggleInsc" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <i class="nav-icon fas"><i class="bi bi-person-plus"></i></i>
               <p>
                 Inscripciones
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -440,7 +436,7 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleAdmin" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <!-- nombre segunda opcion de barra izquierda -->
               <i class="nav-icon fas"><i class="bi bi-person-fill-check"></i></i>
               <p>
@@ -448,7 +444,7 @@ $query->execute();
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -462,14 +458,14 @@ $query->execute();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link active" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+            <a href="#" class="nav-link active" id="toggleConf" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
               <i class="nav-icon fas"><i class="bi bi-gear-fill"></i></i>
               <p>
                 Configuraciones
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="display: none;">
 
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado de -->
@@ -481,6 +477,131 @@ $query->execute();
             </ul>
           </li>
           
+        
+         
+<?php
+    }
+  ?>
+
+
+
+
+<?php
+    if($rol_sesion_usuario == "DOCENTE"){ ?>
+        <li class="nav-item">
+              <a href="#" class="nav-link active"  id="toggleEst" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+                  <i class="nav-icon fas bi bi-person-badge" style="font-size: 1.2em;"></i>
+                  <p>
+                      Estudiantes
+                      <i class="right fas fa-angle-left"></i>
+                  </p>
+              </a>
+              <ul class="nav nav-treeview" style="display: none;">
+                  <li class="nav-item">
+                      <a href="<?=APP_URL;?>/admin/estudiantes" class="nav-link active">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Listado de estudiantes</p>
+                      </a>
+                  </li>
+              </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active" id="toggleCalif" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-card-checklist"></i></i></i>
+              <p>
+                Calificaciones
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/calificaciones" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ingresar calificaciones</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active" id="toggleObs" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+              <!-- nombre segunda opcion de barra izquierda -->
+              <i class="nav-icon fas"><i class="bi bi-exclamation-square-fill"></i></i></i>
+              <p>
+                Observaciones
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/observaciones" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Nueva observacion</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active" id="toggleIn" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">
+              <i class="nav-icon fas"><i class="bi bi-person-plus"></i></i>
+              <p>
+                Inscripciones
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+
+              <li class="nav-item">
+                <!-- configuracion y llamado a opcion de listado de -->
+                <a href="<?=APP_URL;?>/admin/inscripciones" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Formulario de inscripción</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          
+         
+<?php
+    }
+  ?>
+
+
+
+<?php
+    if($rol_sesion_usuario == "ESTUDIANTE"){ ?>
+        
+       
+
+         
+<?php
+    }
+  ?>
+
+
+<script>
+    $(document).ready(function() {
+        // Maneja el clic en cualquier enlace que tenga un submenú
+        $('.nav-link.active').click(function(e) {
+            // Verifica si el siguiente elemento es un submenú
+            if ($(this).next('.nav-treeview').length) {
+                e.preventDefault(); // Evitar que el enlace navegue a "#"
+                $(this).next('.nav-treeview').slideToggle(); // Cambia la visibilidad del submenú
+            }
+        });
+    });
+    </script>
+
 
           
     
@@ -501,3 +622,4 @@ $query->execute();
     </div>
     <!-- /.sidebar -->
   </aside>
+
