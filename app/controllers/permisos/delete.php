@@ -24,7 +24,7 @@ try {
     }
 } catch (Exception $exception) {
     session_start();
-    $_SESSION['mensaje'] = "Error al eliminar el permiso de la base de datos porque ya se encuentra asignado";
+    $_SESSION['mensaje'] = "No se ha podido eliminar el permiso de la base de datos porque ya se encuentra asignado";
     $_SESSION['icono'] = "error";
 
     ?><script>window.history.back()</script><?php

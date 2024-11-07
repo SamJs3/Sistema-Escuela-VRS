@@ -2,40 +2,32 @@
 include('../../../app/config.php');
 $id_rol = $_POST['id_rol'];
 
- 
-$sql_usuarios = "SELECT * FROM usuarios where estado= '1' and rol_id = '$id_rol' ";
-$query_usuarios = $pdo->prepare($sql_usuarios);
-$query_usuarios->execute();
-$usuarios = $query_usuarios->fetchAll(PDO::FETCH_ASSOC);
-$contador = 0;
+//para trabajar con parámetros
+$sentencia = $pdo->prepare("DELETE FROM roles WHERE id_rol=:id_rol");
 
-foreach ($usuarios as $usuario){
-    $contador = $contador+1;
+
+$sentencia->bindParam('id_rol', $id_rol);
+
+
+try {
+    if($sentencia->execute()){
+        session_start();
+        $_SESSION['mensaje'] = 'El rol ha sido eliminado correctamente';
+        $_SESSION['icono'] = 'success';
+        header('Location:'.APP_URL."/admin/roles");
+    }else{
+        session_start();
+        $_SESSION['mensaje'] = 'Error al eliminar el rol de la base de datos';
+        $_SESSION['icono'] = 'error';
+        header('Location:'.APP_URL."/admin/roles");
 }
-if($contador>0){
-    session_start();
-        $_SESSION['mensaje'] = "Error, no se puede completar la acción debido a que existen usuarios asignados a este rol";
-        $_SESSION['icono'] = "error";
-        header('Location: ' . APP_URL . "/admin/roles");
-}else{
-    $sentencia = $pdo->prepare("DELETE FROM roles WHERE id_rol=:id_rol");
-
-    $sentencia->bindParam('id_rol',$id_rol);
-
-        if($sentencia->execute()){
-            session_start();
-            $_SESSION['mensaje'] = "El rol ha sido eliminado exitosamente";
-            $_SESSION['icono'] = "success";
-            header('Location: ' . APP_URL . "/admin/roles");
-        }else{
-            session_start();
-            $_SESSION['mensaje'] = "No se pudo eliminar el rol, por favor intenta de nuevo o comunícate con el administrador";
-            $_SESSION['icono'] = "error";
-            header('Location: ' . APP_URL . "/admin/roles");
-        }
-
+} catch (Exception $exception) {
+        session_start();
+        $_SESSION['mensaje'] = 'No se ha podido eliminar el rol debido a que este registro existe en otros módulos';
+        $_SESSION['icono'] = 'error';
+        header('Location:'.APP_URL."/admin/roles");
+        
 }
-
 
 
 

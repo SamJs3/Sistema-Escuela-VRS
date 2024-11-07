@@ -15,7 +15,9 @@
       V1.0
     </div>
     <!-- Default to the left -->
-    <strong>Copyright © <?=$anio_actual;?> <a href="https://linkedin.com/in/samuel-sunum-46b18a321">Perfil de LinkedIn del creador</a>.</strong> Todos los derechos reservados.
+     Proyecto de graduación realizado por Samuel de Jesús Sunum Mazariegos, estudiante de Ingeniería en Sistemas de la Universidad Mariano Galvez.   
+     <br> 
+     <strong>Copyright © <?=$anio_actual;?> <a href="https://linkedin.com/in/samuel-sunum-46b18a321">Perfil de LinkedIn del creador</a>.</strong> Todos los derechos reservados.
   </footer>
 </div>
 <!-- ./wrapper -->

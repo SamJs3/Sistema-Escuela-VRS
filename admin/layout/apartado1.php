@@ -62,7 +62,7 @@ $query->execute();
     //echo "permiso autorizado";
   }else{
     //echo "permiso no autorizado";
-    header('Location:'.APP_URL."/admin/no_permiso.php");
+    //header('Location:'.APP_URL."/admin/no_permiso.php");
   }
 
   $id_rol_sesion_usuario;
@@ -377,8 +377,7 @@ $query->execute();
                   <p>Listado de roles</p>
                 </a>
               </li>
-            </ul>
-            <ul class="nav nav-treeview">
+
               <li class="nav-item">
                 <!-- configuracion y llamado a opcion de listado roles -->
                 <a href="<?=APP_URL;?>/admin/permisos/index.php" class="nav-link active">
@@ -549,6 +548,7 @@ $query->execute();
               </li>
             </ul>
           </li>
+
 
           <li class="nav-item">
             <a href="#" class="nav-link active" id="toggleIn" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; transition: all 0.3s ease;">

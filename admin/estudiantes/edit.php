@@ -109,11 +109,18 @@ include ('../../app/controllers/estudiantes/datos_estudiante.php');
                                     </div>
                                 </div>
 
-                                <!-- Campo Dirección -->
-                                <div class="col-md-8">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Dirección</label>
                                         <input type="text" name="direccion" value="<?=$direccion;?>" class="form-control" required>
+                                    </div>
+                                </div>       
+
+                                <!-- Campo Dirección -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Estado</label>
+                                        <input type="text" name="estado" value="<?=$estado;?>" class="form-control" required>
                                     </div>
                                 </div>         
                             </div>

@@ -10,13 +10,14 @@ include ('../app/controllers/cursos/listado_de_cursos.php');
 include ('../app/controllers/administrativo/listado_de_administrativos.php');
 include ('../app/controllers/docentes/listado_docentes.php');
 include ('../app/controllers/estudiantes/listado_estudiantes.php');
+include ('../app/controllers/asignaciones/listado_asignaciones.php');
 ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Imagen de la esquina superior derecha -->
     <div style="position: absolute; top: 60px; right: 10px;">
-        <img src="../Asset/Umg.png" class="img-fluid" style="max-width: 85px; height: auto;" alt="Logo esquina derecha">
+    <img src="../Asset/Umg.png" class="img-fluid" style="max-width: 85px; height: auto;" alt="Logo esquina derecha">
     </div>
 
     <br>
@@ -33,7 +34,51 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
 
 
 <!-- WIDGETS HABILITADOS PARA EL DOCENTE -->
-        <?php if($rol_sesion_usuario == "DOCENTE"){ ?>
+        <?php if($rol_sesion_usuario == "DOCENTE"){   
+                foreach($docentes as $docente){
+                if($email_sesion == $docente['correo']){
+                    $id_docente = $docente['id_docente'];
+                    
+                }
+            }
+            foreach ($asignaciones as $asignacione) {
+                if($email_sesion == $asignacione['correo']){
+                  $grado = $asignacione ['grado'];
+                  $seccion = $asignacione ['seccion'];
+              }
+              }
+        ?>
+
+        <div class="row">
+            <!-- Datos del docente -->
+            <div class="col-md-6">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Datos del docente</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm table-bordered table-hover table-striped">
+                            <tr>
+                                <td><b>Nombres y Apellidos:</b></td>
+                                <td><?php echo $nombres_usuario." ".$apellidos_usuario;?></td>
+                            </tr>
+                            <tr>
+                                <td><b>Grado:</b></td>
+                                <td><?php echo $grado;?></td>
+                            </tr>
+                            <tr>
+                                <td><b>Seccion:</b></td>
+                                <td><?php echo $seccion;?></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+
+            
 
         <div class="row">
             <!-- Widget de Estudiantes -->
@@ -87,10 +132,26 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                         <i class="bi bi-exclamation-square-fill"></i>
                     </div>
                     <a href="<?=APP_URL?>/admin/observaciones" class="small-box-footer text-white" style="color: #43cea2;">
-                        Módulo de Observaciones <i class="fas fa-arrow-circle-right"></i>
+                        Módulo Observaciones <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
+
+            <div class="col-lg-4 col-6">
+            <div class="small-box" style="background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to right, #ffc107, #d4af37); background-blend-mode: overlay; border-radius: 12px;">
+                <div class="inner text-dark">
+                    <h3>Salir</h3>
+                    <p>⚠️</p>
+                </div>
+                <div class="icon" style="font-size: 48px; color: #000;">
+                    <i class="bi bi-door-open"></i>
+                </div>
+                <a href="<?=APP_URL;?>/login/logout.php" class="small-box-footer text-dark" style="color: #d4af37;">
+                    Cerrar Sesión <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+             </div>
+
         </div>
 
         <?php } ?> 
@@ -178,6 +239,24 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                     </a>
                 </div>
             </div>
+
+            <div class="col-lg-4 col-6">
+                <div class="small-box" style="background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to right, #ffc107, #d4af37); background-blend-mode: overlay; border-radius: 12px;">
+                    <div class="inner text-dark">
+                        <h3>Salir</h3>
+                        <p>⚠️</p>
+                    </div>
+                    <div class="icon" style="font-size: 48px; color: #000;">
+                        <i class="bi bi-door-open"></i>
+                    </div>
+                    <a href="<?=APP_URL;?>/login/logout.php" class="small-box-footer text-dark" style="color: #d4af37;">
+                        Cerrar Sesión <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+             </div>
+            
+
+
         </div>
 
         <?php } ?> 
@@ -187,8 +266,42 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
  
 <!-- WIDGETS HABILITADOS PARA EL ADMINISTRADOR -->
           <?php
-          if($rol_sesion_usuario == "ADMINISTRADOR" || $rol_sesion_usuario == "DIRECTOR" ){ ?>
-             <div class="row">
+          if($rol_sesion_usuario == "ADMINISTRADOR" || $rol_sesion_usuario == "DIRECTOR" ){ 
+            
+            foreach($administrativos as $administrativo){
+                if($email_sesion == $administrativo['correo']){
+                    $nombre_rol = $administrativo['nombre_rol'];
+                   
+                }
+            }
+        ?>
+
+        <div class="row">
+            <!-- Datos del Estudiante -->
+            <div class="col-md-6">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Datos del usuario</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm table-bordered table-hover table-striped">
+                            <tr>
+                                <td><b>Nombres y Apellidos:</b></td>
+                                <td><?php echo $nombres_usuario." ".$apellidos_usuario;?></td>
+                            </tr>
+                            <tr>
+                                <td><b>Rol:</b></td>
+                                <td><?php echo $rol_sesion_usuario;?></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            
+            <div class="row">
 
             <!-- configuracion del widget de estudiantes -->
               <div class="col-lg-4 col-6">
@@ -243,7 +356,7 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                   <i class="bi bi-exclamation-square-fill"></i>
                   </div>
                   <a href="<?=APP_URL?>/admin/observaciones" class="small-box-footer text-white" style="color: #43cea2;">
-                      Módulo de Observaciones <i class="fas fa-arrow-circle-right"></i>
+                      Módulo Observaciones <i class="fas fa-arrow-circle-right"></i>
                   </a>
               </div>
               </div>
@@ -431,6 +544,22 @@ include ('../app/controllers/estudiantes/listado_estudiantes.php');
                   </a>
                 </div>
               </div>
+
+              <div class="col-lg-4 col-6">
+                <div class="small-box" style="background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to right, #ffc107, #d4af37); background-blend-mode: overlay; border-radius: 12px;">
+                    <div class="inner text-dark">
+                        <h3>Salir</h3>
+                        <p>⚠️</p>
+                    </div>
+                    <div class="icon" style="font-size: 48px; color: #000;">
+                        <i class="bi bi-door-open"></i>
+                    </div>
+                    <a href="<?=APP_URL;?>/login/logout.php" class="small-box-footer text-dark" style="color: #d4af37;">
+                        Cerrar Sesión <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+             </div>
+            
 
           </div> <!-- /.row -->
 
