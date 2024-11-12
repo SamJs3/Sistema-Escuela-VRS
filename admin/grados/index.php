@@ -29,6 +29,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                 <thead class="thead-dark">
                                 <tr>
                                     <th><center>Nro</center></th>
+                                    <th><center>Año</center></th>
                                     <th><center>Nivel</center></th>
                                     <th><center>Grado</center></th>
                                     <th><center>Sección</center></th>
@@ -43,6 +44,7 @@ include ('../../app/controllers/grados/listado_grados.php');
                                     $contador_grados = $contador_grados +1; ?>
                                     <tr>
                                         <td style="text-align: center"><?=$contador_grados;?></td>
+                                        <td style="text-align: center"><?=$grado['periodo'];?></td>
                                         <td style="text-align: center"><?=$grado['nivel'];?></td>
                                         <td style="text-align: center"><?=$grado['grado'];?></td>
                                         <td style="text-align: center"><?=$grado['seccion'];?></td>

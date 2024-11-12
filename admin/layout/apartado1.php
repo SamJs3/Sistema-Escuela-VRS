@@ -33,7 +33,7 @@ $query->execute();
   $url = $_SERVER["PHP_SELF"];
   $conta = strlen($url);
   //contador de url
-  $rest = substr($url, 20, $conta);
+  $rest = substr($url, 0, $conta);
 
   $sql_roles_permisos = "SELECT * FROM roles_permisos AS rolper
   INNER JOIN permisos AS per ON per.id_permiso = rolper.permiso_id

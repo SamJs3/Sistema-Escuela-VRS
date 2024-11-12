@@ -36,7 +36,18 @@ include ('../../app/controllers/cursos/datos_cursos.php');
 
                                         <div class="form-group">
                                             <label for="">Estado</label>
-                                            <input type="text" class="form-control" name="estado" value="<?=$estado?>">
+                                            <select name="estado" id="" class="form-control">
+                                                <?php
+                                                if($estado == "1"){ ?>
+                                                <option value="ACTIVO">ACTIVO</option>
+                                                <option value="INACTIVO">INACTIVO</option>
+                                                <?php
+                                                }else{ ?>
+                                                    <option value="ACTIVO">ACTIVO</option>
+                                                    <option value="INACTIVO" selected="selected">INACTIVO</option>
+                                                <?php
+                                                }?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

@@ -116,7 +116,9 @@ foreach ($asignaciones as $asignacion) {
         style="text-align: center" 
         value="<?= ($nota1 == 0) ? '-' : $nota1; ?>" 
         id="nota1_<?=$contador_estudiantes;?>" 
-        type="text" 
+        type="number" 
+         min="0" 
+        max="100"
         class="form-control">
 </td>
 
@@ -125,7 +127,9 @@ foreach ($asignaciones as $asignacion) {
         style="text-align: center" 
         value="<?= ($nota2 == 0) ? '-' : $nota2; ?>" 
         id="nota2_<?=$contador_estudiantes;?>" 
-        type="number" 
+        type="number"
+        min="0" 
+        max="100" 
         class="form-control">
 </td>
 <td>
@@ -133,7 +137,9 @@ foreach ($asignaciones as $asignacion) {
         style="text-align: center" 
         value="<?= ($nota3 == 0) ? '-' : $nota3; ?>" 
         id="nota3_<?=$contador_estudiantes;?>" 
-        type="number" 
+        type="number"
+        min="0" 
+        max="100" 
         class="form-control">
 </td>
 <td>
@@ -141,7 +147,9 @@ foreach ($asignaciones as $asignacion) {
         style="text-align: center" 
         value="<?= ($nota4 == 0) ? '-' : $nota4; ?>" 
         id="nota4_<?=$contador_estudiantes;?>" 
-        type="number" 
+        type="number"
+        min="0" 
+        max="100" 
         class="form-control">
 </td>
                         <td>
@@ -155,6 +163,8 @@ foreach ($asignaciones as $asignacion) {
               }
               $contador_estudiantes=$contador_estudiantes;
             ?>
+
+
           </tbody>
           </table> 
                 <hr>
@@ -166,9 +176,46 @@ foreach ($asignaciones as $asignacion) {
                         var i = 1;
                         var id_docente = '<?=$id_docente_get?>';
                         var id_curso = '<?=$id_curso_get?>';
+                        var esValido = true;
+                        
+                        for (var i = 1; i <= n; i++) {
+                            // Variables que apuntan a cada campo de nota
+                            var a = '#nota1_' + i;
+                            var b = '#nota2_' + i;
+                            var c = '#nota3_' + i;
+                            var d = '#nota4_' + i;
+                            var f = '#estudiante_' + i;
+
+                            // Obtener las notas de cada unidad
+                            var nota1 = parseFloat($(a).val()) || 0;
+                            var nota2 = parseFloat($(b).val()) || 0;
+                            var nota3 = parseFloat($(c).val()) || 0;
+                            var nota4 = parseFloat($(d).val()) || 0;
+
+                            // Verificar que cada nota sea un número entre 0 y 100
+                            if ((isNaN(nota1) || nota1 < 0 || nota1 > 100) ||
+                                (isNaN(nota2) || nota2 < 0 || nota2 > 100) ||
+                                (isNaN(nota3) || nota3 < 0 || nota3 > 100) ||
+                                (isNaN(nota4) || nota4 < 0 || nota4 > 100)) {
+                                esValido = false;
+                                break; // Detiene el ciclo si encuentra una nota inválida
+                            }
+                        }
+
+                        // Mostrar mensaje de error si hay datos inválidos
+                        if (!esValido) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Asegúrate de que todas las notas ingresadas estén entre 0 y 100.'
+                            });
+                            return; // Evita continuar con el registro si hay errores
+                        }
+                                            
+
                         
                         
-                         for (i = 1; i <= n; i++) {
+                        for (i = 1; i <= n; i++) {
                             var a = '#nota1_' + i;
                             var nota1 = parseFloat($(a).val()) || 0;
 
@@ -190,6 +237,8 @@ foreach ($asignaciones as $asignacion) {
                             var notas = [nota1, nota2, nota3, nota4];
                             var sumaNotas = 0;
                             var cantidadNotas = 0;
+
+                            
 
                             // Sumar las notas y contar solo las válidas (incluir notas de valor 0)
                             for (var j = 0; j < notas.length; j++) {

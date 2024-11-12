@@ -32,7 +32,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                                 <?php
                                                 foreach ($niveles as $nivele){
                                                     ?>
-                                                    <option value="<?=$nivele['id_nivel'];?>"><?=$nivele['nivel'];?></option>
+                                                    <option value="<?=$nivele['id_nivel'];?>"><?=$nivele['nivel']." | ".$nivele['periodo']?></option>
                                                     <?php
                                                 }
                                                 ?>

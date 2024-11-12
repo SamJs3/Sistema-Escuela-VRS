@@ -55,7 +55,18 @@ include ('../../app/controllers/roles/listado_de_roles.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Estado</label>
-                                            <input type="text" name="estado" value="<?=$estado?>" class="form-control" required>
+                                            <select name="estado" id="" class="form-control">
+                                                <?php
+                                                if($estado == "1"){ ?>
+                                                <option value="ACTIVO">ACTIVO</option>
+                                                <option value="INACTIVO">INACTIVO</option>
+                                                <?php
+                                                }else{ ?>
+                                                    <option value="ACTIVO">ACTIVO</option>
+                                                    <option value="INACTIVO" selected="selected">INACTIVO</option>
+                                                <?php
+                                                }?>
+                                            </select>
                                         </div>
                                     </div>  
 

@@ -103,12 +103,30 @@ include ('../../app/controllers/docentes/datos_docente.php');
                                         </div>
                                     </div> 
                                     
-                                    <div class="col-md-8">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Direccion</label>
                                             <input type="text" name="direccion" value="<?=$direccion;?>" class="form-control" required>
                                         </div>
-                                    </div>         
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="">Estado</label>
+                                            <select name="estado" id="" class="form-control">
+                                                <?php
+                                                if($estado == "1"){ ?>
+                                                <option value="ACTIVO">ACTIVO</option>
+                                                <option value="INACTIVO">INACTIVO</option>
+                                                <?php
+                                                }else{ ?>
+                                                    <option value="ACTIVO">ACTIVO</option>
+                                                    <option value="INACTIVO" selected="selected">INACTIVO</option>
+                                                <?php
+                                                }?>
+                                            </select>
+                                        </div>
+                                    </div>                  
                                     
                                 </div>
 

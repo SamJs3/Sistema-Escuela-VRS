@@ -59,7 +59,7 @@ include ('../../app/controllers/configuraciones/datos_año/listado_de_años.php'
                                         </div>
                                     </div>
                                 </div>
-                               <!--  <div class="row">
+                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Turnos</label>
@@ -70,7 +70,27 @@ include ('../../app/controllers/configuraciones/datos_año/listado_de_años.php'
                                             </select>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Estado</label>
+                                            <select name="estado" id="" class="form-control">
+                                                <?php
+                                                if($estado == "1"){ ?>
+                                                <option value="ACTIVO">ACTIVO</option>
+                                                <option value="INACTIVO">INACTIVO</option>
+                                                <?php
+                                                }else{ ?>
+                                                    <option value="ACTIVO">ACTIVO</option>
+                                                    <option value="INACTIVO" selected="selected">INACTIVO</option>
+                                                <?php
+                                                }?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">

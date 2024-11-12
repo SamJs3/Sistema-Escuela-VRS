@@ -94,12 +94,19 @@ foreach ($estudiantes as $estudiante) {
                                         
                             </table>
                             
+                            
                         </div><!-- /.card-body -->
-                
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <a href="<?=APP_URL;?>/admin" class="btn btn-secondary ml-3">Volver</a>
+                          </div>
+                        </div>
                 </div><!-- /.card -->
             
         </div>
+        
         </div><!-- /.row -->
+        
         
     </div><!-- /.container-fluid -->
     </div><!-- /.content -->

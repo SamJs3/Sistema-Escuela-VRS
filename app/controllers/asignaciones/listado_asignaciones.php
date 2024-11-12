@@ -7,7 +7,7 @@ $sql_asignaciones = "SELECT * FROM asignaciones as asi
                     INNER JOIN niveles as niv ON niv.id_nivel = asi.nivel_id
                     INNER JOIN grados as gra ON gra.id_grado = asi.grado_id
                     INNER JOIN cursos as cur ON cur.id_curso = asi.curso_id 
-                    where asi.estado = '1'  ";
+                    where niv.estado = '1'  ";
 $query_asignaciones = $pdo->prepare($sql_asignaciones);
 $query_asignaciones->execute();
 $asignaciones = $query_asignaciones->fetchAll(PDO::FETCH_ASSOC);

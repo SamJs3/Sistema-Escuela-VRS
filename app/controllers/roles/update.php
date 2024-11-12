@@ -8,6 +8,11 @@ $nombre_rol = $_POST['nombre_rol'];
 $nombre_rol = mb_strtoupper($nombre_rol, 'UTF-8');
 $estado = $_POST['estado'];
 $id_rol = $_POST['id_rol'];
+if($estado=="ACTIVO"){
+    $estado = 1;
+}else{
+    $estado = 0;
+}
 
 if($nombre_rol == ""){
     session_start();

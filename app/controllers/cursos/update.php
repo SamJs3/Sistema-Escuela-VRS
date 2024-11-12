@@ -5,6 +5,12 @@ include ('../../../app/config.php');
 $id_curso = $_POST['id_curso'];
 $nombre_curso = $_POST['nombre_curso'];
 $estado = $_POST['estado'];
+if($estado=="ACTIVO"){
+    $estado = 1;
+}else{
+    $estado = 0;
+}
+
 
 $sentencia = $pdo->prepare('UPDATE cursos
  SET nombre_curso=:nombre_curso,

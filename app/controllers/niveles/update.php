@@ -6,17 +6,25 @@ $id_nivel = $_POST['id_nivel'];
 $periodo_id = $_POST['periodo_id'];
 $nivel = $_POST['nivel'];
 $turno = $_POST['turno'];
+$estado = $_POST['estado'];
+if($estado=="ACTIVO"){
+    $estado = 1;
+}else{
+    $estado = 0;
+}
 
 $sentencia = $pdo->prepare('UPDATE niveles
  SET periodo_id=:periodo_id,
      nivel=:nivel,
      turno=:turno,
+     estado=:estado,
      fyh_actualizacion=:fyh_actualizacion
 WHERE id_nivel=:id_nivel ');
 
 $sentencia->bindParam(':periodo_id',$periodo_id);
 $sentencia->bindParam(':nivel',$nivel);
 $sentencia->bindParam(':turno',$turno);
+$sentencia->bindParam(':estado',$estado);
 $sentencia->bindParam('fyh_actualizacion',$fechaAHora);
 $sentencia->bindParam('id_nivel',$id_nivel);
 

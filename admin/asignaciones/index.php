@@ -397,7 +397,7 @@ include ('../../layout/mensajes.php');
                     <?php
                     foreach ($niveles as $nivele){
                       $id_nivel = $nivele['id_nivel'];?>
-                      <option value="<?=$id_nivel;?>"><?=$nivele['nivel']?></option>
+                      <option value="<?=$id_nivel;?>"><?=$nivele['nivel']." | ".$nivele['periodo']?></option>
 
                     <?php    
                     }

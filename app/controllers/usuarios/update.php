@@ -7,6 +7,11 @@ $correo = $_POST['correo'];
 $password = $_POST['password'];
 $estado = $_POST['estado'];
 $password_confirmada = $_POST['password_confirmada'];
+if($estado=="ACTIVO"){
+    $estado = 1;
+}else{
+    $estado = 0;
+}
 
 
 if ($password == ""){ 

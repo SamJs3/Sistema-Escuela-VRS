@@ -13,6 +13,12 @@ $fecha_nacimiento = $_POST['fecha_nacimiento'];
 $celular = $_POST['celular'];
 $correo = $_POST['correo'];
 $direccion = $_POST['direccion'];
+$estado = $_POST['estado'];
+if($estado=="ACTIVO"){
+    $estado = 1;
+}else{
+    $estado = 0;
+}
 
 /* ACTUALIZAR TABLA USUARIOS */
 $pdo->beginTransaction();
@@ -60,11 +66,13 @@ $sentencia->execute();
 
 /* ACTUALIZAR TABLA DOCENTES */
 $sentencia = $pdo->prepare('UPDATE docentes
-            SET fyh_actualizacion=:fyh_actualizacion
+            SET fyh_actualizacion=:fyh_actualizacion,
+                estado=:estado
         WHERE   id_docente=:id_docente ');
 
 
 $sentencia->bindParam('fyh_actualizacion',$fechaAHora);
+$sentencia->bindParam('estado',$estado);
 $sentencia->bindParam('id_docente',$id_docente);
 
 

@@ -109,7 +109,7 @@ include ('../../app/controllers/estudiantes/datos_estudiante.php');
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Dirección</label>
                                         <input type="text" name="direccion" value="<?=$direccion;?>" class="form-control" required>
@@ -117,10 +117,21 @@ include ('../../app/controllers/estudiantes/datos_estudiante.php');
                                 </div>       
 
                                 <!-- Campo Dirección -->
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="">Estado</label>
-                                        <input type="text" name="estado" value="<?=$estado;?>" class="form-control" required>
+                                        <select name="estado" id="" class="form-control">
+                                                <?php
+                                                if($estado == "1"){ ?>
+                                                <option value="ACTIVO">ACTIVO</option>
+                                                <option value="INACTIVO">INACTIVO</option>
+                                                <?php
+                                                }else{ ?>
+                                                    <option value="ACTIVO">ACTIVO</option>
+                                                    <option value="INACTIVO" selected="selected">INACTIVO</option>
+                                                <?php
+                                                }?>
+                                            </select>
                                     </div>
                                 </div>         
                             </div>

@@ -53,17 +53,16 @@ include ('../../app/controllers/configuraciones/datos_año/listado_de_años.php'
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="row">
+                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Turnos</label>
+                                            <label for="">Turno</label>
                                             <select name="turno" id="" class="form-control">
-                                                // <option value="Mañana">Mañana</option> 
                                                 <option value="Tarde">Tarde</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">

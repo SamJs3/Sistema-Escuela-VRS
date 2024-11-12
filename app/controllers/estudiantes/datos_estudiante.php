@@ -39,6 +39,7 @@ foreach ( $estudiantes as $estudiante){
     $nivel = $estudiante['nivel'];
     $grado = $estudiante['grado'];
     $seccion = $estudiante['seccion'];
+    $estado = $estudiante['estado'];
     
     
 }

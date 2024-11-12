@@ -23,6 +23,13 @@ $celular_pf = $_POST['celular_pf'];
 $parentezco = $_POST['parentezco'];
 $encargado_dos = $_POST['encargado_dos'];
 $numero_dos = $_POST['numero_dos'];
+$estado = $_POST['estado'];
+
+if($estado=="ACTIVO"){
+    $estado = 1;
+}else{
+    $estado = 0;
+}
 
 
 /* ACUTALIZAR TABLA USUARIOS */
@@ -77,13 +84,15 @@ $sentencia = $pdo->prepare('UPDATE estudiantes
             SET 
                 nivel_id=:nivel_id,
                 grado_id=:grado_id,
-                fyh_actualizacion=:fyh_actualizacion
+                fyh_actualizacion=:fyh_actualizacion,
+                estado=:estado
             WHERE id_estudiante=:id_estudiante');
 
 $sentencia->bindParam(':nivel_id',$nivel_id);
 $sentencia->bindParam(':grado_id',$grado_id);
 $sentencia->bindParam('fyh_actualizacion',$fechaAHora);
 $sentencia->bindParam('id_estudiante',$id_estudiante);
+$sentencia->bindParam('estado',$estado);
 $sentencia->execute();
 
 

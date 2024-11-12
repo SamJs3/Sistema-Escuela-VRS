@@ -41,6 +41,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                                 ?>
                                             </select>
                                         </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="row">
@@ -64,7 +65,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Turnos</label>
+                                            <label for="">Seccion</label>
                                             <select name="seccion" id="" class="form-control">
                                                 <option value="A"<?=$seccion=='A' ? 'selected' : ''?>>A</option>
                                                 <option value="B"<?=$seccion=='B' ? 'selected' : ''?>>B</option>
@@ -73,6 +74,28 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Estado</label>
+                                            <select name="estado" id="" class="form-control">
+                                                <?php
+                                                if($estado == "1"){ ?>
+                                                <option value="ACTIVO">ACTIVO</option>
+                                                <option value="INACTIVO">INACTIVO</option>
+                                                <?php
+                                                }else{ ?>
+                                                    <option value="ACTIVO">ACTIVO</option>
+                                                    <option value="INACTIVO" selected="selected">INACTIVO</option>
+                                                <?php
+                                                }?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">

@@ -237,10 +237,7 @@ include('../../layout/mensajes.php');
       "lengthChange": false,
       "autoWidth": false,
       "buttons": [
-        {
-          extend: 'copy',
-          text: 'Copiar'
-        },
+        
         {
           extend: 'csv',
           text: 'CSV'
@@ -249,14 +246,7 @@ include('../../layout/mensajes.php');
           extend: 'excel',
           text: 'Excel'
         },
-        {
-          extend: 'pdf',
-          text: 'PDF'
-        },
-        {
-          extend: 'print',
-          text: 'Imprimir'
-        },
+        
         {
           extend: 'colvis',
           text: 'Visibilidad de columnas'

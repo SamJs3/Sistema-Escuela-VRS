@@ -375,7 +375,14 @@ foreach ($asignaciones as $asignacione) {
 
                             </table>
                         </div><!-- /.card-body -->
-                
+                 <!-- Boton Volver -->
+                 <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <a href="<?=APP_URL;?>/admin" class="btn btn-secondary ml-3">Volver</a>
+                              </div>
+                            </div>
+                          </div>
                 </div><!-- /.card -->
             
             </div>

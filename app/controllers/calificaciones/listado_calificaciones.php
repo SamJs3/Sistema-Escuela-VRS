@@ -1,6 +1,5 @@
 <?php
-//Consulta sql para mostrar registros de 2 tablas diferentes pero relacionadas 
-//que sirven para llamar los datos al index de calificaciones
+
     $sql_calificaciones = " SELECT * FROM calificaciones AS cal
     INNER JOIN cursos AS cur ON cur.id_curso = cal.curso_id
     WHERE cal.estado = '1' ";
